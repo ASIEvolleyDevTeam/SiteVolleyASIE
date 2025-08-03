@@ -11,7 +11,7 @@ export const GlobalCalendarTable = () => {
   const [calendar, setCalendar] = useState<CalendarEntry[]>([]);
 
   useEffect(() => {
-    fetch('/api/global_calendar')
+    fetch(`${import.meta.env.VITE_API_BASE}/api/global_calendar`)
       .then((res) => res.json())
       .then((data) => setCalendar(data));
   }, []);

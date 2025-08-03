@@ -36,7 +36,7 @@ export const CupBracketTable = () => {
   const [rounds, setRounds] = useState<RoundMap>({});
 
   useEffect(() => {
-    fetch('/api/cupgames')
+    fetch(`${import.meta.env.VITE_API_BASE}/api/cupgames`)
       .then((res) => res.json())
       .then((matches: CupMatch[]) => {
         const byNext = new Map<number, CupMatch[]>();

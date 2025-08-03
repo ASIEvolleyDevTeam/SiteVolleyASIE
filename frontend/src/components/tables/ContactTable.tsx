@@ -10,7 +10,7 @@ export const ContactsTable = () => {
   const [contacts, setContacts] = useState<Contact[]>([]);
 
   useEffect(() => {
-    fetch('/api/contacts')
+    fetch(`${import.meta.env.VITE_API_BASE}/api/contacts`)
       .then((res) => res.json())
       .then((data) => setContacts(data));
   }, []);

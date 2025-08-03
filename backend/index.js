@@ -13,7 +13,11 @@ const cupRoutes = require("./routes/cup");
 const contactsRoutes = require("./routes/contacts");
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://site-volley-asie.vercel.app/",
+  })
+);
 app.use(express.json());
 
 app.use("/api/matches", matchesRoutes);

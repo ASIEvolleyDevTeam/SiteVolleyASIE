@@ -17,7 +17,7 @@ export const ResultsTable = () => {
   const [results, setResults] = useState<MatchResult[]>([]);
 
   useEffect(() => {
-    fetch('/api/results')
+    fetch(`${import.meta.env.VITE_API_BASE}/api/results`)
       .then((res) => res.json())
       .then((data) => setResults(data));
   }, []);

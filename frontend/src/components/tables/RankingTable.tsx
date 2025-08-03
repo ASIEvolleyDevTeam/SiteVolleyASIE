@@ -19,7 +19,7 @@ export const RankingTable = ({ poolId }: { poolId: number }) => {
   const [ranking, setRanking] = useState<Ranking[]>([]);
 
   useEffect(() => {
-    fetch(`/api/rankings/${poolId}`)
+    fetch(`${import.meta.env.VITE_API_BASE}/api/rankings/${poolId}`)
       .then((res) => res.json())
       .then((data) => setRanking(data));
   }, [poolId]);

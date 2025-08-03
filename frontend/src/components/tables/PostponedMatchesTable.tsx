@@ -11,7 +11,7 @@ export const PostponedMatchesTable = () => {
   const [matches, setMatches] = useState<Match[]>([]);
 
   useEffect(() => {
-    fetch('/api/matches/postponed')
+    fetch(`${import.meta.env.VITE_API_BASE}/api/matches/postponed`)
       .then((res) => res.json())
       .then((data) => setMatches(data));
   }, []);

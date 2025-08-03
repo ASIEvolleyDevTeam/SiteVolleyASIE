@@ -11,7 +11,7 @@ export const UpcomingMatchesTable = () => {
   const [matches, setMatches] = useState<Match[]>([]);
 
   useEffect(() => {
-    fetch('/api/matches/upcoming')
+    fetch(`${import.meta.env.VITE_API_BASE}/api/matches/upcoming`)
       .then((res) => res.json())
       .then((data) => setMatches(data));
   }, []);

@@ -17,7 +17,7 @@ export const TeamCalendarTable = ({ teamName }: { teamName: string }) => {
   const [matches, setMatches] = useState<Match[]>([]);
 
   useEffect(() => {
-    fetch(`/api/team_calendar/${teamName}`)
+    fetch(`${import.meta.env.VITE_API_BASE}/api/team_calendar/${teamName}`)
       .then((res) => res.json())
       .then((data) => setMatches(data));
   }, [teamName]);
