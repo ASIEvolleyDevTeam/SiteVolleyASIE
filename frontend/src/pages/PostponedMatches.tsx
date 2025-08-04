@@ -29,7 +29,7 @@ export const PostponedMatches = () => {
                 href="mailto:asievolley06+reports@googlegroups.com"
                 className="underline"
               >
-                asievolley06+reports@googlegroups.com
+                l'adresse de l'association dédiée aux reports
               </a>
               , en mettant en copie les capitaines de toutes les équipes
               concernées.

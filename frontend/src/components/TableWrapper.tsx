@@ -29,7 +29,7 @@ const TableWrapper = ({
     );
   }
 
-  return <div className="overflow-x-auto p-8">{children}</div>;
+  return <div className="max-w-full overflow-x-auto lg:p-8">{children}</div>;
 };
 
 export default TableWrapper;
