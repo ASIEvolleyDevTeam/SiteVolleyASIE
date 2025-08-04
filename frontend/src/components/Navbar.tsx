@@ -61,20 +61,31 @@ export const Navbar = () => {
 
 const MenuList = ({ mobile = false }: { mobile?: boolean }) => (
   <ul
-    className={`menu ${mobile ? 'menu-vertical w-full items-center p-2 text-center' : 'menu-horizontal px-1'}`}
+    className={`menu ${mobile ? 'menu-vertical w-full items-center p-2' : 'menu-horizontal px-1'}`}
   >
-    <li>
-      <a href="/">Home</a>
+    <li className={mobile ? 'w-full' : ''}>
+      <a className={mobile ? 'w-full justify-center' : ''} href="/">
+        Home
+      </a>
     </li>
-    <li>
-      <a href="/ranking">Classement</a>
+    <li className={mobile ? 'w-full' : ''}>
+      <a className={mobile ? 'w-full justify-center' : ''} href="/ranking">
+        Classement
+      </a>
     </li>
-    <li>
-      <a href="/global-calendar">Calendrier Global</a>
+    <li className={mobile ? 'w-full' : ''}>
+      <a
+        className={mobile ? 'w-full justify-center' : ''}
+        href="/global-calendar"
+      >
+        Calendrier Global
+      </a>
     </li>
-    <li>
+    <li className={mobile ? 'w-full' : ''}>
       <details>
-        <summary>Calendriers d'équipe</summary>
+        <summary className={mobile ? 'w-full justify-center' : ''}>
+          Calendriers d'équipe
+        </summary>
         <ul className="bg-base-200 z-50 p-2 text-center">
           {[
             'Amadeus',
@@ -92,26 +103,47 @@ const MenuList = ({ mobile = false }: { mobile?: boolean }) => (
             'Thales',
           ].map((team) => (
             <li key={team}>
-              <a href={`/team-calendar/${encodeURIComponent(team)}`}>{team}</a>
+              <a
+                className={mobile ? 'w-full justify-center' : ''}
+                href={`/team-calendar/${encodeURIComponent(team)}`}
+              >
+                {team}
+              </a>
             </li>
           ))}
         </ul>
       </details>
     </li>
-    <li>
-      <a href="/results">Résultats</a>
+    <li className={mobile ? 'w-full' : ''}>
+      <a className={mobile ? 'w-full justify-center' : ''} href="/results">
+        Résultats
+      </a>
     </li>
-    <li>
-      <a href="/postponed-matches">Matchs reportés</a>
+    <li className={mobile ? 'w-full' : ''}>
+      <a
+        className={mobile ? 'w-full justify-center' : ''}
+        href="/postponed-matches"
+      >
+        Matchs reportés
+      </a>
     </li>
-    <li>
-      <a href="/asie-cup">A.S.I.E. Cup</a>
+    <li className={mobile ? 'w-full' : ''}>
+      <a className={mobile ? 'w-full justify-center' : ''} href="/asie-cup">
+        A.S.I.E. Cup
+      </a>
     </li>
-    <li>
-      <a href="/championship-rules">Règles du championnat</a>
+    <li className={mobile ? 'w-full' : ''}>
+      <a
+        className={mobile ? 'w-full justify-center' : ''}
+        href="/championship-rules"
+      >
+        Règles du championnat
+      </a>
     </li>
-    <li>
-      <a href="/contact">Contact</a>
+    <li className={mobile ? 'w-full' : ''}>
+      <a className={mobile ? 'w-full justify-center' : ''} href="/contact">
+        Contact
+      </a>
     </li>
   </ul>
 );
