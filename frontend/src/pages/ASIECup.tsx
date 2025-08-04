@@ -5,7 +5,9 @@ export const ASIECup = () => {
       <h1 className="mb-8 p-8 text-center text-4xl font-bold">
         Coupe A.S.I.E. Volley
       </h1>
-      <CupBracketTable />
+      <div className="lg:mx-auto lg:max-w-5xl lg:overflow-x-auto lg:p-8">
+        <CupBracketTable />
+      </div>
       <h2 className="mb-8 pt-8 text-center text-4xl font-bold">Hall of Fame</h2>
       <div className="mx-auto max-w-4xl overflow-x-auto p-8">
         <table className="table">
