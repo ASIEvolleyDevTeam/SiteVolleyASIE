@@ -26,7 +26,7 @@ export const Home = () => {
           </p>
           <a
             className="btn bg-primary text-secondary-content mt-4 w-full"
-            href="/docs/feuille-de-match.pdf"
+            href="/docs/Feuille_de_match_autoarbitrage.pdf"
             download
           >
             Télécharger la feuille d'arbitrage
