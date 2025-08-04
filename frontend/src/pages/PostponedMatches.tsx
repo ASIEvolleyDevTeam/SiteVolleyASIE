@@ -8,7 +8,7 @@ export const PostponedMatches = () => {
         </h2>
         <PostponedMatchesTable />
       </section>
-      <section className="mx-auto flex flex-col p-8 lg:w-1/2">
+      <section className="mx-auto p-8 lg:w-1/2">
         <section className="bg-base-200 rounded-xl p-8 shadow">
           <h1 className="mb-6 text-center text-4xl font-bold">
             Règles de report

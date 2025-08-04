@@ -95,7 +95,7 @@ export const CupBracketTable = () => {
       )}
       emptyMessage="Aucune rencontre de coupe."
     >
-      <div className="overflow-x-auto px-4">
+      <div className="px-4">
         <div className="grid min-w-full auto-cols-min grid-flow-col justify-center gap-6">
           {Object.entries(rounds).map(([round, matches]) => (
             <div
