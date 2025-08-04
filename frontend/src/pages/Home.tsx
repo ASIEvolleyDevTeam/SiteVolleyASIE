@@ -6,15 +6,33 @@ export const Home = () => {
       <section className="flex flex-col items-center justify-center p-8 text-center lg:w-1/2">
         <h1 className="mb-4 text-4xl font-bold">A.S.I.E. Volley</h1>
         <p className="text-xl italic">
-          "Le volley inter-entreprises, ensemble c'est mieux."
+          L'association de volley inter-entreprises de Sophia Antipolis
         </p>
       </section>
-      <section className="lg:w-1/2">
-        <h2 className="mb-4 pt-8 text-center text-2xl font-semibold">
-          Prochains matches
-        </h2>
-        <UpcomingMatchesTable />
-      </section>
+      <div className="flex items-center justify-center p-8 lg:w-1/2">
+        <section className="bg-base-200 rounded-xl p-8 shadow">
+          <h2 className="mb-6 text-center text-4xl font-bold">
+            Prochains matches
+          </h2>
+          <div className="bg-warning/20 border-warning text-warning-800 rounded border-l-4 px-4 py-3 text-base">
+            <span className="font-semibold">Important :</span> Si un match n'est
+            pas annoncé ici, vous ne serez pas prioritaires pour jouer vis-à-vis
+            de joueurs ayant prévu de s'entrainer !
+            <br />
+          </div>
+          <UpcomingMatchesTable />
+          <p className="text-center">
+            Pour toute question contactez Clément et Robin !
+          </p>
+          <a
+            className="btn bg-primary text-secondary-content mt-4 w-full"
+            href="/docs/feuille-de-match.pdf"
+            download
+          >
+            Télécharger la feuille d'arbitrage
+          </a>
+        </section>
+      </div>
     </main>
   );
 };

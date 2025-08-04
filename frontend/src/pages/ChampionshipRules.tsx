@@ -15,10 +15,16 @@ export const ChampionshipRules = () => {
         </p>
         <p className="mb-2">
           Les règles classiques du volley en salle s'appliquent avec quelques
-          différences : 1- chaque équipe est constituée de 4 joueurs, 2- il n'y
-          a ni faute de position ni de "joueur arrière". Les matchs se jouent en
-          deux sets gagnants de 25 points avec 2 points d'écart.
+          différences :
         </p>
+        <ul className="mb-2 ml-6 list-disc">
+          <li>Chaque équipe est constituée de 4 joueurs</li>
+          <li>Il n'y a ni faute de position ni de "joueur arrière"</li>
+          <li>
+            Les matchs se jouent en deux sets gagnants de 25 points avec 2
+            points d'écart
+          </li>
+        </ul>
         <p>
           En cas d'égalité, un troisième set de 15 points est joué avec 2 points
           d'écart. Si interrompu, un set terminé aux deux tiers compte. Sinon,
