@@ -15,7 +15,7 @@ const contactsRoutes = require("./routes/contacts");
 const app = express();
 app.use(
   cors({
-    origin: "https://site-volley-asie.vercel.app/",
+    origin: process.env.CORS_ORIGIN,
   })
 );
 app.use(express.json());
