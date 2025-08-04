@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import TableWrapper from '../TableWrapper';
 
 type Match = {
   date: string;
@@ -15,17 +16,29 @@ type Match = {
 
 export const TeamCalendarTable = ({ teamName }: { teamName: string }) => {
   const [matches, setMatches] = useState<Match[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_BASE}/api/team_calendar/${teamName}`)
       .then((res) => res.json())
-      .then((data) => setMatches(data));
+      .then((data) => {
+        setMatches(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
   }, [teamName]);
 
   return (
-    <div className="overflow-x-auto">
-      <table className="table-bordered table w-full text-center text-sm">
-        <thead>
+    <TableWrapper
+      loading={loading}
+      dataLength={matches.length}
+      emptyMessage="Pas de matches à venir pour l’instant."
+    >
+      <table className="table text-center text-sm">
+        <thead className="bg-base-300">
           <tr>
             <th>Date</th>
             <th>Equipe 1</th>
@@ -36,7 +49,7 @@ export const TeamCalendarTable = ({ teamName }: { teamName: string }) => {
             <th>Arbitre</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="bg-base-200">
           {matches.map((m, i) => (
             <tr key={i}>
               <td>{m.date}</td>
@@ -58,7 +71,7 @@ export const TeamCalendarTable = ({ teamName }: { teamName: string }) => {
           ))}
         </tbody>
       </table>
-    </div>
+    </TableWrapper>
   );
 };
 export default TeamCalendarTable;

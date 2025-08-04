@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import TableWrapper from '../TableWrapper';
 
 type MatchResult = {
   date: string;
@@ -15,16 +16,28 @@ type MatchResult = {
 
 export const ResultsTable = () => {
   const [results, setResults] = useState<MatchResult[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_BASE}/api/results`)
       .then((res) => res.json())
-      .then((data) => setResults(data));
+      .then((data) => {
+        setResults(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
   }, []);
 
   return (
-    <div className="overflow-x-auto p-8">
-      <table className="bg-base-200 table w-full">
+    <TableWrapper
+      loading={loading}
+      dataLength={results.length}
+      emptyMessage="Pas de matches pour l’instant."
+    >
+      <table className="table text-center">
         <thead className="bg-base-300">
           <tr>
             <th>Date</th>
@@ -36,7 +49,7 @@ export const ResultsTable = () => {
             <th>Arbitre</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="bg-base-200">
           {results.map((match, index) => (
             <tr key={index}>
               <td>{match.date}</td>
@@ -58,7 +71,7 @@ export const ResultsTable = () => {
           ))}
         </tbody>
       </table>
-    </div>
+    </TableWrapper>
   );
 };
 export default ResultsTable;

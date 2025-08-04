@@ -15,21 +15,23 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/ranking" element={<Ranking />} />
-        <Route path="/global-calendar" element={<GlobalCalendar />} />
-        <Route path="/team-calendar/:teamName" element={<TeamCalendar />} />
-        <Route path="/results" element={<Results />} />
-        <Route path="/postponed-matches" element={<PostponedMatches />} />
-        <Route path="/asie-cup" element={<ASIECup />} />
-        <Route path="/championship-rules" element={<ChampionshipRules />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      <div className="flex-1">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/ranking" element={<Ranking />} />
+          <Route path="/global-calendar" element={<GlobalCalendar />} />
+          <Route path="/team-calendar/:teamName" element={<TeamCalendar />} />
+          <Route path="/results" element={<Results />} />
+          <Route path="/postponed-matches" element={<PostponedMatches />} />
+          <Route path="/asie-cup" element={<ASIECup />} />
+          <Route path="/championship-rules" element={<ChampionshipRules />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </div>
       <Footer />
-    </>
+    </div>
   );
 }
 

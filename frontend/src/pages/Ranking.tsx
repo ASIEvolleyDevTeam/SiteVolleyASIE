@@ -6,8 +6,8 @@ export const Ranking = () => {
 
   return (
     <main className="mx-auto flex min-h-[calc(100vh-85px)] max-w-4xl flex-col items-center p-4">
-      <h1 className="mb-4 p-8 text-center text-4xl font-bold">Classement</h1>
-      <section className="flex justify-center gap-8 p-4">
+      <h1 className="mb-4 pt-8 text-center text-4xl font-bold">Classement</h1>
+      <section className="flex justify-center gap-8 p-2">
         {[1, 2, 3].map((id) => (
           <label
             key={id}

@@ -6,16 +6,16 @@ export const ASIECup = () => {
         Coupe A.S.I.E. Volley
       </h1>
       <CupBracketTable />
-      <h2 className="mb-8 p-8 text-center text-4xl font-bold">Hall of Fame</h2>
-      <div className="mx-auto max-w-4xl overflow-x-auto">
+      <h2 className="mb-8 pt-8 text-center text-4xl font-bold">Hall of Fame</h2>
+      <div className="mx-auto max-w-4xl overflow-x-auto p-8">
         <table className="table">
-          <thead>
+          <thead className="bg-base-300 text-center">
             <tr>
               <th>Année</th>
               <th>Equipe</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="bg-base-200 text-center">
             <tr>
               <td>2013-2014</td>
               <td>NVIDIA A</td>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import TableWrapper from '../TableWrapper';
 
 type CalendarEntry = {
   date: string;
@@ -9,16 +10,28 @@ type CalendarEntry = {
 
 export const GlobalCalendarTable = () => {
   const [calendar, setCalendar] = useState<CalendarEntry[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_BASE}/api/global_calendar`)
       .then((res) => res.json())
-      .then((data) => setCalendar(data));
+      .then((data) => {
+        setCalendar(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
   }, []);
 
   return (
-    <div className="overflow-x-auto">
-      <table className="bg-base-200 table w-full">
+    <TableWrapper
+      loading={loading}
+      dataLength={calendar.length}
+      emptyMessage="Aucun match au calendrier global."
+    >
+      <table className="table">
         <thead className="bg-base-300">
           <tr>
             <th>Date</th>
@@ -27,7 +40,7 @@ export const GlobalCalendarTable = () => {
             <th>Arbitre</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="bg-base-200">
           {calendar.map((entry, index) => (
             <tr key={index}>
               <td>{entry.date}</td>
@@ -38,7 +51,7 @@ export const GlobalCalendarTable = () => {
           ))}
         </tbody>
       </table>
-    </div>
+    </TableWrapper>
   );
 };
 export default GlobalCalendarTable;

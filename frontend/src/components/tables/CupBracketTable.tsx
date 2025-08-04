@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import TableWrapper from '../TableWrapper';
 
 type CupMatch = {
   id: number;
@@ -34,6 +35,7 @@ function getRoundLabels(totalRounds: number): string[] {
 
 export const CupBracketTable = () => {
   const [rounds, setRounds] = useState<RoundMap>({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_BASE}/api/cupgames`)
@@ -76,62 +78,81 @@ export const CupBracketTable = () => {
         }
 
         setRounds(roundAssignments);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
       });
   }, []);
 
   return (
-    <div className="overflow-x-auto px-4">
-      <div className="grid min-w-full auto-cols-min grid-flow-col justify-center gap-6">
-        {Object.entries(rounds).map(([round, matches]) => (
-          <div key={round} className="flex min-w-[180px] flex-col items-center">
-            <h2 className="mb-3 text-center text-sm font-semibold">{round}</h2>
-            {matches.map((m, i) => (
-              <div
-                key={i}
-                className="bg-base-200 mb-4 flex h-28 w-40 flex-col justify-center rounded p-2 text-center text-sm shadow-inner"
-              >
-                <div className="text-xs">{m.date}</div>
-                <div className={m.winner === m.team1 ? 'font-bold' : ''}>
-                  {m.team1 || '—'}
-                </div>
-                <div className="my-1 flex flex-row justify-center gap-2">
-                  {[1, 2, 3].map((setNum) => {
-                    const t1 = m[`set${setNum}_team1` as keyof typeof m];
-                    const t2 = m[`set${setNum}_team2` as keyof typeof m];
-                    if (t1 === null && t2 === null)
+    <TableWrapper
+      loading={loading}
+      dataLength={Object.values(rounds).reduce(
+        (acc, arr) => acc + arr.length,
+        0
+      )}
+      emptyMessage="Aucune rencontre de coupe."
+    >
+      <div className="overflow-x-auto px-4">
+        <div className="grid min-w-full auto-cols-min grid-flow-col justify-center gap-6">
+          {Object.entries(rounds).map(([round, matches]) => (
+            <div
+              key={round}
+              className="flex min-w-[180px] flex-col items-center"
+            >
+              <h2 className="badge bg-base-200 mb-3 text-center font-semibold">
+                {round}
+              </h2>
+              {matches.map((m, i) => (
+                <div
+                  key={i}
+                  className="bg-base-200 mb-4 flex h-28 w-40 flex-col justify-center rounded p-2 text-center text-sm shadow-inner"
+                >
+                  <div className="text-xs">{m.date}</div>
+                  <div className={m.winner === m.team1 ? 'font-bold' : ''}>
+                    {m.team1 || '—'}
+                  </div>
+                  <div className="my-1 flex flex-row justify-center gap-2">
+                    {[1, 2, 3].map((setNum) => {
+                      const t1 = m[`set${setNum}_team1` as keyof typeof m];
+                      const t2 = m[`set${setNum}_team2` as keyof typeof m];
+                      if (t1 === null && t2 === null)
+                        return (
+                          <div
+                            key={setNum}
+                            className="flex w-6 flex-col items-center"
+                          >
+                            <span className="text-xs text-gray-400">—</span>
+                            <span className="text-xs text-gray-400">—</span>
+                          </div>
+                        );
                       return (
                         <div
                           key={setNum}
                           className="flex w-6 flex-col items-center"
                         >
-                          <span className="text-xs text-gray-400">—</span>
-                          <span className="text-xs text-gray-400">—</span>
+                          <span className="text-xs">
+                            {t1 !== null ? t1 : '—'}
+                          </span>
+                          <span className="text-xs">
+                            {t2 !== null ? t2 : '—'}
+                          </span>
                         </div>
                       );
-                    return (
-                      <div
-                        key={setNum}
-                        className="flex w-6 flex-col items-center"
-                      >
-                        <span className="text-xs">
-                          {t1 !== null ? t1 : '—'}
-                        </span>
-                        <span className="text-xs">
-                          {t2 !== null ? t2 : '—'}
-                        </span>
-                      </div>
-                    );
-                  })}
+                    })}
+                  </div>
+                  <div className={m.winner === m.team2 ? 'font-bold' : ''}>
+                    {m.team2 || '—'}
+                  </div>
                 </div>
-                <div className={m.winner === m.team2 ? 'font-bold' : ''}>
-                  {m.team2 || '—'}
-                </div>
-              </div>
-            ))}
-          </div>
-        ))}
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </TableWrapper>
   );
 };
 export default CupBracketTable;

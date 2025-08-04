@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import TableWrapper from '../TableWrapper';
 
 type Contact = {
   team: string;
@@ -8,15 +9,27 @@ type Contact = {
 
 export const ContactsTable = () => {
   const [contacts, setContacts] = useState<Contact[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_BASE}/api/contacts`)
       .then((res) => res.json())
-      .then((data) => setContacts(data));
+      .then((data) => {
+        setContacts(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
   }, []);
 
   return (
-    <div className="overflow-x-auto">
+    <TableWrapper
+      loading={loading}
+      dataLength={contacts.length}
+      emptyMessage="Aucun contact disponible."
+    >
       <table className="bg-base-200 table w-full">
         <thead className="bg-base-300">
           <tr>
@@ -25,7 +38,7 @@ export const ContactsTable = () => {
             <th>Mail</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="bg-base-200">
           {contacts.map((c, index) => (
             <tr key={index}>
               <td>{c.team}</td>
@@ -42,7 +55,7 @@ export const ContactsTable = () => {
           ))}
         </tbody>
       </table>
-    </div>
+    </TableWrapper>
   );
 };
 export default ContactsTable;

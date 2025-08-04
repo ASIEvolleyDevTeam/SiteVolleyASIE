@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import TableWrapper from '../TableWrapper';
 
 type Match = {
   date: string;
@@ -9,17 +10,29 @@ type Match = {
 
 export const UpcomingMatchesTable = () => {
   const [matches, setMatches] = useState<Match[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_BASE}/api/matches/upcoming`)
       .then((res) => res.json())
-      .then((data) => setMatches(data));
+      .then((data) => {
+        setMatches(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
   }, []);
 
   return (
-    <div className="overflow-x-auto">
-      <table className="table-zebra table w-full">
-        <thead>
+    <TableWrapper
+      loading={loading}
+      dataLength={matches.length}
+      emptyMessage="Pas de matches à venir pour l’instant."
+    >
+      <table className="table-zebra table text-center">
+        <thead className="bg-base-300">
           <tr>
             <th>Date</th>
             <th>Équipe 1</th>
@@ -27,7 +40,7 @@ export const UpcomingMatchesTable = () => {
             <th>Arbitre</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="bg-base-200">
           {matches.map((match, index) => (
             <tr key={index}>
               <td>{match.date}</td>
@@ -38,7 +51,7 @@ export const UpcomingMatchesTable = () => {
           ))}
         </tbody>
       </table>
-    </div>
+    </TableWrapper>
   );
 };
 
