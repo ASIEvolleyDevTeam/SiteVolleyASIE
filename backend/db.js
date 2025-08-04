@@ -3,6 +3,8 @@ const fs = require("fs");
 const mysql = require("mysql2");
 require("dotenv").config();
 
+const useCa = process.env.USE_CA;
+
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
