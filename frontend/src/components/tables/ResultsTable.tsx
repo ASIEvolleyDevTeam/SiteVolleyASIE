@@ -35,7 +35,7 @@ export const ResultsTable = () => {
     <TableWrapper
       loading={loading}
       dataLength={results.length}
-      emptyMessage="Pas de matches pour l’instant."
+      emptyMessage="Pas de matchs pour l’instant."
     >
       <table className="table text-center">
         <thead className="bg-base-300">

@@ -7,7 +7,7 @@ export const ChampionshipRules = () => {
 
       <section className="bg-base-200 mb-6 rounded-xl p-6 shadow">
         <h2 className="mb-4 text-center text-2xl font-bold">
-          Déroulement des matches
+          Déroulement des matchs
         </h2>
         <p className="mb-2">
           Les matchs ont lieu à 12h15 les lundi et jeudis au gymnase du CIV. Une

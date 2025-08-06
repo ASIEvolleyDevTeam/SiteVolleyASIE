@@ -29,7 +29,7 @@ export const UpcomingMatchesTable = () => {
     <TableWrapper
       loading={loading}
       dataLength={matches.length}
-      emptyMessage="Pas de matches à venir pour l’instant."
+      emptyMessage="Pas de matchs à venir pour l’instant."
     >
       <table className="table-zebra table text-center">
         <thead className="bg-base-300">

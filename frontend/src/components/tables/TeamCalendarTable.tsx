@@ -35,7 +35,7 @@ export const TeamCalendarTable = ({ teamName }: { teamName: string }) => {
     <TableWrapper
       loading={loading}
       dataLength={matches.length}
-      emptyMessage="Pas de matches à venir pour l’instant."
+      emptyMessage="Pas de matchs à venir pour l’instant."
     >
       <table className="table text-center text-sm">
         <thead className="bg-base-300">

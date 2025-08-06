@@ -12,7 +12,7 @@ export const Home = () => {
       <div className="flex items-center justify-center p-8 lg:w-1/2">
         <section className="bg-base-200 rounded-xl p-8 shadow">
           <h2 className="mb-6 text-center text-4xl font-bold">
-            Prochains matches
+            Prochains matchs
           </h2>
           <div className="bg-warning/20 border-warning text-warning-800 rounded border-l-4 px-4 py-3 text-base">
             <span className="font-semibold">Important :</span> Si un match n'est
