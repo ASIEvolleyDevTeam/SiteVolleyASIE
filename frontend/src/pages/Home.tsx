@@ -2,7 +2,7 @@ import UpcomingMatchesTable from '../components/tables/UpcomingMatchesTable';
 
 export const Home = () => {
   return (
-    <main className="flex min-h-[calc(100vh-85px)] flex-col lg:flex-row">
+    <main className="flex min-h-[calc(100vh-142px)] flex-col lg:flex-row">
       <section className="flex flex-col items-center justify-center p-8 text-center lg:w-1/2">
         <h1 className="mb-4 text-4xl font-bold">A.S.I.E. Volley</h1>
         <p className="text-xl italic">
@@ -22,7 +22,14 @@ export const Home = () => {
           </div>
           <UpcomingMatchesTable />
           <p className="text-center">
-            Pour toute question contactez Clément et Robin !
+            Pour toute question contactez Clément avec l'adresse mail{' '}
+            <a
+              href="mailto:asievolley06@googlegroups.com"
+              className="underline"
+            >
+              asievolley06@googlegroups.com
+            </a>
+            !
           </p>
           <a
             className="btn bg-primary text-secondary-content mt-4 w-full"

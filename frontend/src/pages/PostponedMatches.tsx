@@ -1,7 +1,7 @@
 import PostponedMatchesTable from '../components/tables/PostponedMatchesTable';
 export const PostponedMatches = () => {
   return (
-    <main className="flex min-h-[calc(100vh-85px)] flex-col items-center justify-center lg:flex-row">
+    <main className="flex min-h-[calc(100vh-142px)] flex-col items-center justify-center lg:flex-row">
       <section className="bg-base-100 p-8 lg:w-1/2">
         <h2 className="mb-4 text-center text-2xl font-semibold">
           Matches en attente de report
