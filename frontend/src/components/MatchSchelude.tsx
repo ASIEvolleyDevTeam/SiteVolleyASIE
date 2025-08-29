@@ -78,7 +78,7 @@ export default function MatchSchedule() {
 
         {/* Admin button absolutely positioned to the right */}
         <button
-          className="btn btn-error btn-sm absolute right-0"
+          className="btn btn-error btn-sm absolute lg:right-0"
           onClick={handleAdminClick}
         >
           {isAdmin ? 'Quitter admin' : 'Mode admin'}

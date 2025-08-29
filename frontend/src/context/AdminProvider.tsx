@@ -1,10 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { AdminContext } from './AdminContext';
 
 export function AdminProvider({ children }: { children: ReactNode }) {
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [adminPassword, setAdminPassword] = useState<string | null>(null);
+  // restore from localStorage if present
+  const [isAdmin, setIsAdmin] = useState<boolean>(() => {
+    return localStorage.getItem('isAdmin') === 'true';
+  });
+  const [adminPassword, setAdminPassword] = useState<string | null>(() => {
+    return localStorage.getItem('adminPassword');
+  });
+
+  // keep localStorage in sync
+  useEffect(() => {
+    localStorage.setItem('isAdmin', String(isAdmin));
+    if (adminPassword) {
+      localStorage.setItem('adminPassword', adminPassword);
+    } else {
+      localStorage.removeItem('adminPassword');
+    }
+  }, [isAdmin, adminPassword]);
 
   const loginAdmin = async (password: string): Promise<boolean> => {
     try {
@@ -28,6 +43,8 @@ export function AdminProvider({ children }: { children: ReactNode }) {
       }
     } catch (err) {
       console.error('Erreur connexion backend', err);
+      setIsAdmin(false);
+      setAdminPassword(null);
       return false;
     }
   };
@@ -35,6 +52,8 @@ export function AdminProvider({ children }: { children: ReactNode }) {
   const logoutAdmin = () => {
     setIsAdmin(false);
     setAdminPassword(null);
+    localStorage.removeItem('isAdmin');
+    localStorage.removeItem('adminPassword');
   };
 
   return (
