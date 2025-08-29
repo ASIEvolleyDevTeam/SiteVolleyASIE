@@ -9,11 +9,32 @@ interface TimeslotCardProps {
 
 export default function TimeslotCard({ slot }: TimeslotCardProps) {
   const [open, setOpen] = useState(false);
-  const { isAdmin } = useAdmin();
+  const { isAdmin, adminPassword } = useAdmin();
 
   // valeurs des deux côtés
   const teamA = slot.teams[0] ?? '???';
   const teamB = slot.teams[1] ?? '???';
+
+  const handleUnregister = async (teamName: string) => {
+    const res = await fetch(
+      `${import.meta.env.VITE_API_BASE}/api/schedule/slots/${slot.id}/unregister`,
+      {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          teamName,
+          password: adminPassword, // récupéré du contexte
+        }),
+      }
+    );
+
+    if (res.ok) {
+      window.location.reload();
+    } else {
+      const err = await res.json();
+      alert(err.error || 'Erreur lors de la désinscription');
+    }
+  };
 
   return (
     <div className="card bg-base-100 flex flex-col shadow">
@@ -26,7 +47,12 @@ export default function TimeslotCard({ slot }: TimeslotCardProps) {
           }`}
         >
           {isAdmin && slot.teams[0] && (
-            <button className="btn btn-xs btn-error">✖</button>
+            <button
+              className="btn btn-xs btn-error"
+              onClick={() => handleUnregister(slot.teams[0])}
+            >
+              ✖
+            </button>
           )}
           <span className="text-sm font-medium">{teamA}</span>
         </div>
@@ -40,7 +66,12 @@ export default function TimeslotCard({ slot }: TimeslotCardProps) {
         >
           <span className="text-sm font-medium">{teamB}</span>
           {isAdmin && slot.teams[1] && (
-            <button className="btn btn-xs btn-error">✖</button>
+            <button
+              className="btn btn-xs btn-error"
+              onClick={() => handleUnregister(slot.teams[1])}
+            >
+              ✖
+            </button>
           )}
         </div>
       </div>

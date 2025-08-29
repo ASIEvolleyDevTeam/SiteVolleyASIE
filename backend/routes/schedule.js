@@ -70,7 +70,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-/*
 // POST /api/schedule/slots/:id/register
 router.post("/slots/:id/register", async (req, res) => {
   try {
@@ -101,7 +100,7 @@ router.post("/slots/:id/register", async (req, res) => {
     res.status(500).json({ error: "Erreur serveur" });
   }
 });
-
+/*
 // DELETE /api/schedule/slots/:id/unregister
 router.delete("/slots/:id/unregister", async (req, res) => {
   try {

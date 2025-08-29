@@ -18,14 +18,17 @@ export default function SignupModal({ slot, onClose }: SignupModalProps) {
       return;
     }
 
-    const res = await fetch(`/api/schedule/slots/${slot.id}/register`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        teamName: team,
-        password: isAdmin ? adminPassword : password,
-      }),
-    });
+    const res = await fetch(
+      `${import.meta.env.VITE_API_BASE}/api/schedule/slots/${slot.id}/register`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          teamName: team,
+          password: isAdmin ? adminPassword : password,
+        }),
+      }
+    );
 
     if (res.ok) {
       onClose();
