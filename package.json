@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "daisyui": "^5.0.50"
+  },
+  "dependencies": {
+    "mysql2": "^3.14.3"
   }
 }

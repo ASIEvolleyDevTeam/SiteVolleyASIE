@@ -3,6 +3,8 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
+const scheduleRoutes = require("./routes/schedule");
+
 const matchesRoutes = require("./routes/matches");
 const rankingsRoutes = require("./routes/rankings");
 const globalCalendarRoutes = require("./routes/global_calendar");
@@ -19,6 +21,8 @@ app.use(
   })
 );
 app.use(express.json());
+
+app.use("/api/schedule", scheduleRoutes);
 
 app.use("/api/matches", matchesRoutes);
 app.use("/api/rankings", rankingsRoutes);

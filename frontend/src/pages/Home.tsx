@@ -1,4 +1,6 @@
-import UpcomingMatchesTable from '../components/tables/UpcomingMatchesTable';
+import MatchSchedule from '../components/MatchSchelude';
+import { mockWeeks } from '../test_data/MockData';
+import { AdminProvider } from '../context/AdminProvider';
 
 export const Home = () => {
   return (
@@ -20,7 +22,16 @@ export const Home = () => {
             de joueurs ayant prévu de s'entrainer !
             <br />
           </div>
-          <UpcomingMatchesTable />
+          <AdminProvider>
+            <MatchSchedule weeks={mockWeeks} />
+          </AdminProvider>
+          <a
+            className="btn bg-primary text-secondary-content mt-4 w-full"
+            href="/docs/Feuille_de_match_autoarbitrage.pdf"
+            download
+          >
+            Télécharger la feuille d'arbitrage
+          </a>
           <p className="text-center">
             Pour toute question contactez Clément avec l'adresse mail{' '}
             <a
@@ -31,13 +42,6 @@ export const Home = () => {
             </a>
             !
           </p>
-          <a
-            className="btn bg-primary text-secondary-content mt-4 w-full"
-            href="/docs/Feuille_de_match_autoarbitrage.pdf"
-            download
-          >
-            Télécharger la feuille d'arbitrage
-          </a>
         </section>
       </div>
     </main>
