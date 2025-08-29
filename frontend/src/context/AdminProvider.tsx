@@ -4,22 +4,40 @@ import { AdminContext } from './AdminContext';
 
 export function AdminProvider({ children }: { children: ReactNode }) {
   const [isAdmin, setIsAdmin] = useState(false);
+  const [adminPassword, setAdminPassword] = useState<string | null>(null);
 
-  const loginAdmin = (password: string) => {
-    if (password === 'monMotDePasse') {
-      // TODO: remplacer par le vrai mot de passe
-      setIsAdmin(true);
-      return true;
+  const loginAdmin = async (password: string): Promise<boolean> => {
+    try {
+      const res = await fetch('/api/schedule/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password }),
+      });
+
+      if (res.ok) {
+        setIsAdmin(true);
+        setAdminPassword(password);
+        return true;
+      } else {
+        setIsAdmin(false);
+        setAdminPassword(null);
+        return false;
+      }
+    } catch (err) {
+      console.error('Erreur connexion backend', err);
+      return false;
     }
-    return false;
   };
 
   const logoutAdmin = () => {
     setIsAdmin(false);
+    setAdminPassword(null);
   };
 
   return (
-    <AdminContext.Provider value={{ isAdmin, loginAdmin, logoutAdmin }}>
+    <AdminContext.Provider
+      value={{ isAdmin, adminPassword, loginAdmin, logoutAdmin }}
+    >
       {children}
     </AdminContext.Provider>
   );

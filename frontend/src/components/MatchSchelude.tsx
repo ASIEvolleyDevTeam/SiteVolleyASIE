@@ -1,12 +1,24 @@
 import DaySection from './DaySection';
 import type { Week } from '../types';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAdmin } from '../context/useAdmin';
 
-interface MatchScheduleProps {
-  weeks: Week[];
-}
-export default function MatchSchedule({ weeks }: MatchScheduleProps) {
+export default function MatchSchedule() {
+  const [weeks, setWeeks] = useState<Week[]>([]);
+
+  useEffect(() => {
+    const fetchWeeks = async () => {
+      const from = new Date();
+      const to = new Date();
+      to.setDate(to.getDate() + 14); // +2 semaines
+      const res = await fetch(
+        `/api/weeks?from=${from.toISOString()}&to=${to.toISOString()}`
+      );
+      const data = await res.json();
+      setWeeks(data);
+    };
+    fetchWeeks();
+  }, []);
   const [currentWeek, setCurrentWeek] = useState(0);
   const { isAdmin, loginAdmin, logoutAdmin } = useAdmin();
 

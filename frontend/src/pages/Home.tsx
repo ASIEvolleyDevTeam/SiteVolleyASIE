@@ -1,5 +1,4 @@
 import MatchSchedule from '../components/MatchSchelude';
-import { mockWeeks } from '../test_data/MockData';
 import { AdminProvider } from '../context/AdminProvider';
 
 export const Home = () => {
@@ -23,7 +22,7 @@ export const Home = () => {
             <br />
           </div>
           <AdminProvider>
-            <MatchSchedule weeks={mockWeeks} />
+            <MatchSchedule />
           </AdminProvider>
           <a
             className="btn bg-primary text-secondary-content mt-4 w-full"

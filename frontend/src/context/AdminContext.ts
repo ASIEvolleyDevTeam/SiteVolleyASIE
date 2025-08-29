@@ -2,7 +2,8 @@ import { createContext } from 'react';
 
 interface AdminContextProps {
   isAdmin: boolean;
-  loginAdmin: (password: string) => boolean;
+  adminPassword: string | null;
+  loginAdmin: (password: string) => Promise<boolean>; // ✅ async
   logoutAdmin: () => void;
 }
 

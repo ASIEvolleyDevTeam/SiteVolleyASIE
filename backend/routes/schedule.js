@@ -3,6 +3,18 @@ const express = require("express");
 const router = express.Router();
 const db = require("../db"); // ton module MySQL (à adapter si tu utilises mysql2/promise)
 
+// POST /api/admin/login
+router.post("/admin/login", async (req, res) => {
+  const { password } = req.body;
+
+  if (password === process.env.MATCH_PASSWORD) {
+    return res.json({ success: true });
+  }
+  return res
+    .status(403)
+    .json({ success: false, error: "Mot de passe invalide" });
+});
+
 // GET /api/schedule?from=YYYY-MM-DD&to=YYYY-MM-DD
 router.get("/", async (req, res) => {
   try {

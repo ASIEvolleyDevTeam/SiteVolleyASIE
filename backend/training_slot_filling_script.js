@@ -1,4 +1,22 @@
-const db = require("../db");
+const fs = require("fs");
+const mysql = require("mysql2/promise");
+require("dotenv").config();
+
+const useCa = process.env.USE_CA;
+
+const db = mysql.createPool({
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  ssl: useCa
+    ? {
+        ca: fs.readFileSync("./ca.pem"), // Aiven requires SSL
+        rejectUnauthorized: true,
+      }
+    : false,
+});
 
 const startDate = new Date("2025-09-01"); // lundi 1 sept 2025
 const endDate = new Date("2026-09-01"); // 1 an plus tard

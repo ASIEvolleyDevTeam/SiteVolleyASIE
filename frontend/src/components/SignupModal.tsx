@@ -10,11 +10,30 @@ interface SignupModalProps {
 export default function SignupModal({ slot, onClose }: SignupModalProps) {
   const [password, setPassword] = useState('');
   const [team, setTeam] = useState('');
-  const { isAdmin } = useAdmin();
+  const { isAdmin, adminPassword } = useAdmin();
 
-  const handleSubmit = () => {
-    console.log('Inscription:', { team, password, slot });
-    onClose();
+  const handleSubmit = async () => {
+    if (!team) {
+      alert('Veuillez sélectionner une équipe.');
+      return;
+    }
+
+    const res = await fetch(`/api/schedule/slots/${slot.id}/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        teamName: team,
+        password: isAdmin ? adminPassword : password,
+      }),
+    });
+
+    if (res.ok) {
+      onClose();
+      window.location.reload(); // TODO: remplacer plus tard par un setState intelligent
+    } else {
+      const err = await res.json();
+      alert(err.error || "Erreur lors de l'inscription");
+    }
   };
 
   return (
@@ -33,6 +52,7 @@ export default function SignupModal({ slot, onClose }: SignupModalProps) {
             />
           </div>
         )}
+
         <div className="form-control mb-3">
           <label className="label">
             <span className="label-text mb-2">Votre équipe</span>
@@ -43,9 +63,13 @@ export default function SignupModal({ slot, onClose }: SignupModalProps) {
             onChange={(e) => setTeam(e.target.value)}
           >
             <option value="">-- Sélectionner une équipe --</option>
-            <option value="Équipe A">Équipe A</option>
-            <option value="Équipe B">Équipe B</option>
-            <option value="Équipe C">Équipe C</option>
+            <option value="EURECOM">EURECOM</option>
+            <option value="Synopsys">Synopsys</option>
+            <option value="NXP2">NXP2</option>
+            <option value="FortiTeam">FortiTeam</option>
+            <option value="NXP1">NXP1</option>
+            <option value="AirFrance">AirFrance</option>
+            <option value="SiMoVolley">SiMoVolley</option>
           </select>
         </div>
 
