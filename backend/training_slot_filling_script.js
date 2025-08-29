@@ -1,3 +1,4 @@
+/* 
 const fs = require("fs");
 const mysql = require("mysql2/promise");
 require("dotenv").config();
@@ -56,3 +57,4 @@ seed().catch((err) => {
   console.error(err);
   process.exit(1);
 });
+*/
