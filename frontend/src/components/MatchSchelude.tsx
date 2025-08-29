@@ -68,7 +68,7 @@ export default function MatchSchedule() {
   return (
     <div className="m-2">
       {/* Header with arrows */}
-      <div className="relative m-4 flex items-center justify-center">
+      <div className="m-4 flex flex-col items-center lg:relative lg:flex-row lg:justify-center">
         {/* Center group */}
         <div className="flex items-center gap-4">
           <button
