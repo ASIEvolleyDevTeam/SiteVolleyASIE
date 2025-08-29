@@ -43,6 +43,14 @@ export default function MatchSchedule() {
 
   const week = weeks[currentWeek];
 
+  if (!week) {
+    return (
+      <div className="flex justify-center py-20">
+        <span className="loading loading-spinner loading-lg text-primary"></span>
+      </div>
+    );
+  }
+
   return (
     <div className="m-2">
       {/* Header with arrows */}
