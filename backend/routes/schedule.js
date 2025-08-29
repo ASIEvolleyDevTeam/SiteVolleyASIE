@@ -100,7 +100,7 @@ router.post("/slots/:id/register", async (req, res) => {
     res.status(500).json({ error: "Erreur serveur" });
   }
 });
-/*
+
 // DELETE /api/schedule/slots/:id/unregister
 router.delete("/slots/:id/unregister", async (req, res) => {
   try {
@@ -122,5 +122,4 @@ router.delete("/slots/:id/unregister", async (req, res) => {
     res.status(500).json({ error: "Erreur serveur" });
   }
 });
-*/
 module.exports = router;
