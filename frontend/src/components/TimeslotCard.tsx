@@ -5,9 +5,12 @@ import { useAdmin } from '../context/useAdmin';
 
 interface TimeslotCardProps {
   slot: Slot;
+  onUpdateTeams: (slotId: number, newTeams: string[]) => void;
 }
-
-export default function TimeslotCard({ slot }: TimeslotCardProps) {
+export default function TimeslotCard({
+  slot,
+  onUpdateTeams,
+}: TimeslotCardProps) {
   const [open, setOpen] = useState(false);
   const { isAdmin, adminPassword } = useAdmin();
 
@@ -29,7 +32,10 @@ export default function TimeslotCard({ slot }: TimeslotCardProps) {
     );
 
     if (res.ok) {
-      window.location.reload();
+      onUpdateTeams(
+        slot.id,
+        slot.teams.filter((t) => t !== teamName)
+      );
     } else {
       const err = await res.json();
       alert(err.error || 'Erreur lors de la désinscription');
@@ -94,7 +100,13 @@ export default function TimeslotCard({ slot }: TimeslotCardProps) {
         )}
       </div>
 
-      {open && <SignupModal slot={slot} onClose={() => setOpen(false)} />}
+      {open && (
+        <SignupModal
+          slot={slot}
+          onClose={() => setOpen(false)}
+          onUpdateTeams={onUpdateTeams}
+        />
+      )}
     </div>
   );
 }

@@ -41,6 +41,20 @@ export default function MatchSchedule() {
     setCurrentWeek((prev) => (prev < weeks.length - 1 ? prev + 1 : prev));
   };
 
+  const updateSlotTeams = (slotId: number, newTeams: string[]) => {
+    setWeeks((prev) =>
+      prev.map((week) => ({
+        ...week,
+        days: week.days.map((day) => ({
+          ...day,
+          timeslots: day.timeslots.map((slot) =>
+            slot.id === slotId ? { ...slot, teams: newTeams } : slot
+          ),
+        })),
+      }))
+    );
+  };
+
   const week = weeks[currentWeek];
 
   if (!week) {
@@ -78,7 +92,7 @@ export default function MatchSchedule() {
 
         {/* Admin button absolutely positioned to the right */}
         <button
-          className="btn btn-error btn-sm absolute lg:right-0"
+          className="btn btn-error btn-sm lg:absolute lg:right-0"
           onClick={handleAdminClick}
         >
           {isAdmin ? 'Quitter admin' : 'Mode admin'}
@@ -88,7 +102,7 @@ export default function MatchSchedule() {
       {/* Week content */}
       <div className="grid grid-cols-2 gap-1">
         {week.days.map((day, di) => (
-          <DaySection key={di} day={day} />
+          <DaySection key={di} day={day} onUpdateTeams={updateSlotTeams} />
         ))}
       </div>
     </div>

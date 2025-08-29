@@ -5,9 +5,14 @@ import { useAdmin } from '../context/useAdmin';
 interface SignupModalProps {
   slot: Slot;
   onClose: () => void;
+  onUpdateTeams: (slotId: number, newTeams: string[]) => void;
 }
 
-export default function SignupModal({ slot, onClose }: SignupModalProps) {
+export default function SignupModal({
+  slot,
+  onClose,
+  onUpdateTeams,
+}: SignupModalProps) {
   const [password, setPassword] = useState('');
   const [team, setTeam] = useState('');
   const { isAdmin, adminPassword } = useAdmin();
@@ -31,8 +36,8 @@ export default function SignupModal({ slot, onClose }: SignupModalProps) {
     );
 
     if (res.ok) {
+      onUpdateTeams(slot.id, [...slot.teams, team]);
       onClose();
-      window.location.reload(); // TODO: remplacer plus tard par un setState intelligent
     } else {
       const err = await res.json();
       alert(err.error || "Erreur lors de l'inscription");
