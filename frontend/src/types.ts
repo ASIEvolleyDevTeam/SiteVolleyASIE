@@ -10,6 +10,7 @@ export interface Day {
 }
 
 export interface Week {
-  start: string; // e.g. "2 Septembre"
+  id: number;
+  start_date: string; // backend renvoie bien "start_date"
   days: Day[];
 }

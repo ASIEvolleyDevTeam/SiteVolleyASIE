@@ -57,7 +57,7 @@ export default function MatchSchedule() {
             ←
           </button>
           <h2 className="text-center text-xl font-bold">
-            Semaine du {week.start}
+            Semaine du {new Date(week.start_date).toLocaleDateString('fr-FR')}
           </h2>
           <button
             onClick={handleNext}
