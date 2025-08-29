@@ -12,7 +12,7 @@ export default function MatchSchedule() {
       const to = new Date();
       to.setDate(to.getDate() + 14); // +2 semaines
       const res = await fetch(
-        `/api/schedule?from=${from.toISOString()}&to=${to.toISOString()}`
+        `${import.meta.env.VITE_API_BASE}/api/schedule?from=${from.toISOString()}&to=${to.toISOString()}`
       );
       const data = await res.json();
       setWeeks(data);
