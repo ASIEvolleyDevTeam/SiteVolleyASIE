@@ -10,7 +10,7 @@ export default function MatchSchedule() {
     const fetchWeeks = async () => {
       const from = new Date();
       const to = new Date();
-      to.setDate(to.getDate() + 14); // +2 semaines
+      to.setDate(to.getDate() + 21); // +2 semaines
       const res = await fetch(
         `${import.meta.env.VITE_API_BASE}/api/schedule?from=${from.toISOString()}&to=${to.toISOString()}`
       );
@@ -92,7 +92,7 @@ export default function MatchSchedule() {
 
         {/* Admin button absolutely positioned to the right */}
         <button
-          className="btn btn-error btn-sm lg:absolute lg:right-0"
+          className="btn btn-error btn-sm mt-2 lg:absolute lg:right-0 lg:mt-0"
           onClick={handleAdminClick}
         >
           {isAdmin ? 'Quitter admin' : 'Mode admin'}
