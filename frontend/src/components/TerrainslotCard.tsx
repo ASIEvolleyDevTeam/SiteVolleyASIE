@@ -109,7 +109,7 @@ export default function TerrainslotCard({
           )
         ) : (
           <button className="btn btn-neutral btn-sm">
-            Période de réservation dépassée
+            Réservation dépassée
           </button>
         )}
       </div>
