@@ -1,4 +1,4 @@
-/* 
+/*
 const fs = require("fs");
 const mysql = require("mysql2/promise");
 require("dotenv").config();
@@ -21,7 +21,7 @@ const db = mysql.createPool({
 
 const startDate = new Date("2025-09-01"); // lundi 1 sept 2025
 const endDate = new Date("2026-09-01"); // 1 an plus tard
-const slots = ["18:00:00", "19:00:00", "20:00:00"];
+const slots = ["Terrain 1", "Terrain 2", "Terrain 3"];
 const days = ["lundi", "jeudi"];
 
 async function seed() {
@@ -37,10 +37,10 @@ async function seed() {
 
     // insérer les créneaux lundi + jeudi
     for (const day of days) {
-      for (const time of slots) {
+      for (const terrain of slots) {
         await db.query(
-          "INSERT INTO training_time_slots (week_id, day, time) VALUES (?, ?, ?)",
-          [weekId, day, time]
+          "INSERT INTO terrain_training_slots (week_id, day, terrain) VALUES (?, ?, ?)",
+          [weekId, day, terrain]
         );
       }
     }

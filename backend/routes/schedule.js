@@ -27,11 +27,11 @@ router.get("/", async (req, res) => {
 
     // récupérer slots + équipes pour chaque semaine
     const [slots] = await db.query(
-      `SELECT s.id, s.week_id, s.day, s.time, t.team_name
-       FROM training_time_slots s
-       LEFT JOIN teams_slots t ON t.slot_id = s.id
+      `SELECT s.id, s.week_id, s.day, s.terrain, t.team_name
+       FROM terrain_training_slots s
+       LEFT JOIN teams_training_slots t ON t.slot_id = s.id
        WHERE s.week_id IN (?) 
-       ORDER BY s.day, s.time`,
+       ORDER BY s.day, s.terrain`,
       [weeks.map((w) => w.id)]
     );
 
@@ -82,7 +82,7 @@ router.post("/slots/:id/register", async (req, res) => {
 
     // vérifier nombre d’équipes déjà inscrites
     const [rows] = await db.query(
-      "SELECT COUNT(*) AS count FROM teams_slots WHERE slot_id = ?",
+      "SELECT COUNT(*) AS count FROM teams_training_slots WHERE slot_id = ?",
       [slotId]
     );
     if (rows[0].count >= 2) {
@@ -90,7 +90,7 @@ router.post("/slots/:id/register", async (req, res) => {
     }
 
     await db.query(
-      "INSERT INTO teams_slots (slot_id, team_name) VALUES (?, ?)",
+      "INSERT INTO teams_training_slots (slot_id, team_name) VALUES (?, ?)",
       [slotId, teamName]
     );
 
@@ -112,7 +112,7 @@ router.delete("/slots/:id/unregister", async (req, res) => {
     }
 
     await db.query(
-      "DELETE FROM teams_slots WHERE slot_id = ? AND team_name = ?",
+      "DELETE FROM teams_training_slots WHERE slot_id = ? AND team_name = ?",
       [slotId, teamName]
     );
 
