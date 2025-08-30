@@ -18,6 +18,14 @@ export default function TerrainslotCard({
   const teamA = slot.teams[0] ?? '???';
   const teamB = slot.teams[1] ?? '???';
 
+  function isBookingOpen(weekStartDate: string): boolean {
+    const weekStart = new Date(weekStartDate); // lundi de la semaine
+    const deadline = new Date(weekStart);
+    deadline.setDate(deadline.getDate() - 3); // vendredi précédent
+    deadline.setHours(17, 0, 0, 0);
+    return new Date() <= deadline;
+  }
+
   const handleUnregister = async (teamName: string) => {
     const res = await fetch(
       `${import.meta.env.VITE_API_BASE}/api/schedule/slots/${slot.id}/unregister`,
@@ -84,18 +92,24 @@ export default function TerrainslotCard({
 
       {/* bouton inscription */}
       <div className="flex flex-col p-2">
-        {slot.teams.length < 2 ? (
-          <button
-            className={`btn btn-sm ${
-              slot.teams.length === 0 ? 'btn-primary' : 'btn-warning'
-            }`}
-            onClick={() => setOpen(true)}
-          >
-            Inscrire une équipe
-          </button>
+        {isBookingOpen(slot.week_start_date) ? (
+          slot.teams.length < 2 ? (
+            <button
+              className={`btn btn-sm ${
+                slot.teams.length === 0 ? 'btn-primary' : 'btn-warning'
+              }`}
+              onClick={() => setOpen(true)}
+            >
+              Inscrire une équipe
+            </button>
+          ) : (
+            <button className="btn btn-success btn-sm" disabled>
+              Créneau réservé
+            </button>
+          )
         ) : (
-          <button className="btn btn-neutral btn-sm" disabled>
-            Créneau réservé
+          <button className="btn btn-neutral btn-sm">
+            Période de réservation dépassée
           </button>
         )}
       </div>

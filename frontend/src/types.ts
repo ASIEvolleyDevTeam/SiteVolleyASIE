@@ -1,7 +1,9 @@
 export interface Slot {
   id: number;
+  day: string;
   terrain: string;
   teams: string[];
+  week_start_date: string;
 }
 
 export interface Day {

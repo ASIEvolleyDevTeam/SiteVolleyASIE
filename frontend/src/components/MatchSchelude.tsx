@@ -1,5 +1,5 @@
 import DaySection from './DaySection';
-import type { Week } from '../types';
+import type { Week, Day, Slot } from '../types';
 import { useState, useEffect } from 'react';
 import { useAdmin } from '../context/useAdmin';
 
@@ -15,7 +15,19 @@ export default function MatchSchedule() {
         `${import.meta.env.VITE_API_BASE}/api/schedule?from=${from.toISOString()}&to=${to.toISOString()}`
       );
       const data = await res.json();
-      setWeeks(data);
+      // enrich each slot with week_start_date
+      const enriched = data.map((week: Week) => ({
+        ...week,
+        days: week.days.map((day: Day) => ({
+          ...day,
+          terrainslots: day.terrainslots.map((slot: Slot) => ({
+            ...slot,
+            week_start_date: week.start_date,
+          })),
+        })),
+      }));
+
+      setWeeks(enriched);
     };
     fetchWeeks();
   }, []);
@@ -47,7 +59,7 @@ export default function MatchSchedule() {
         ...week,
         days: week.days.map((day) => ({
           ...day,
-          terrainslots: day.terrainslots.map((slot) =>
+          terrainslots: day.terrainslots.map((slot: Slot) =>
             slot.id === slotId ? { ...slot, teams: newTeams } : slot
           ),
         })),
