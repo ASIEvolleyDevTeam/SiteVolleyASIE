@@ -37,7 +37,6 @@ export const GlobalCalendarTable = () => {
             <th>Date</th>
             <th>Équipe 1</th>
             <th>Équipe 2</th>
-            <th>Arbitre</th>
           </tr>
         </thead>
         <tbody className="bg-base-200">
@@ -46,7 +45,6 @@ export const GlobalCalendarTable = () => {
               <td>{entry.date}</td>
               <td>{entry.team1}</td>
               <td>{entry.team2}</td>
-              <td>{entry.referee}</td>
             </tr>
           ))}
         </tbody>

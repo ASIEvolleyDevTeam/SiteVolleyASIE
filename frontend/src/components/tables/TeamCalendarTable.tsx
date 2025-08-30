@@ -46,7 +46,6 @@ export const TeamCalendarTable = ({ teamName }: { teamName: string }) => {
             <th>Set 1</th>
             <th>Set 2</th>
             <th>Set 3</th>
-            <th>Arbitre</th>
           </tr>
         </thead>
         <tbody className="bg-base-200">
@@ -66,7 +65,6 @@ export const TeamCalendarTable = ({ teamName }: { teamName: string }) => {
                   ? `${m.set3_team1} – ${m.set3_team2}`
                   : '—'}
               </td>
-              <td>{m.referee || '—'}</td>
             </tr>
           ))}
         </tbody>

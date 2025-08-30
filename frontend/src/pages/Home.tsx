@@ -24,13 +24,6 @@ export const Home = () => {
           <AdminProvider>
             <MatchSchedule />
           </AdminProvider>
-          <a
-            className="btn bg-primary text-secondary-content mt-4 w-full"
-            href="/docs/Feuille_de_match_autoarbitrage.pdf"
-            download
-          >
-            Télécharger la feuille d'arbitrage
-          </a>
           <p className="text-center">
             Pour toute question contactez Clément avec l'adresse mail{' '}
             <a

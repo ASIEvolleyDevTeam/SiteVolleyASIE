@@ -37,7 +37,6 @@ export const PostponedMatchesTable = () => {
             <th>Date</th>
             <th>Équipe 1</th>
             <th>Équipe 2</th>
-            <th>Arbitre</th>
           </tr>
         </thead>
         <tbody className="bg-base-200">
@@ -46,7 +45,6 @@ export const PostponedMatchesTable = () => {
               <td>{m.date}</td>
               <td>{m.team1}</td>
               <td>{m.team2}</td>
-              <td>{m.referee}</td>
             </tr>
           ))}
         </tbody>

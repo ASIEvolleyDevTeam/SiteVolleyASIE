@@ -37,7 +37,6 @@ export const UpcomingMatchesTable = () => {
             <th>Date</th>
             <th>Équipe 1</th>
             <th>Équipe 2</th>
-            <th>Arbitre</th>
           </tr>
         </thead>
         <tbody className="bg-base-200">
@@ -46,7 +45,6 @@ export const UpcomingMatchesTable = () => {
               <td>{match.date}</td>
               <td>{match.team1}</td>
               <td>{match.team2}</td>
-              <td>{match.referee}</td>
             </tr>
           ))}
         </tbody>

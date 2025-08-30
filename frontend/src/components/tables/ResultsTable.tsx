@@ -46,7 +46,6 @@ export const ResultsTable = () => {
             <th>Set 1</th>
             <th>Set 2</th>
             <th>Set 3</th>
-            <th>Arbitre</th>
           </tr>
         </thead>
         <tbody className="bg-base-200">
@@ -66,7 +65,6 @@ export const ResultsTable = () => {
                   ? `${match.set3_team1} - ${match.set3_team2}`
                   : '—'}
               </td>
-              <td>{match.referee}</td>
             </tr>
           ))}
         </tbody>
