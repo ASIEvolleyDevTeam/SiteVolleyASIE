@@ -6,7 +6,7 @@ export interface Slot {
 
 export interface Day {
   label: string;
-  timeslots: Slot[];
+  terrainslots: Slot[];
 }
 
 export interface Week {

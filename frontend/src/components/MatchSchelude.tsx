@@ -47,7 +47,7 @@ export default function MatchSchedule() {
         ...week,
         days: week.days.map((day) => ({
           ...day,
-          timeslots: day.timeslots.map((slot) =>
+          terrainslots: day.terrainslots.map((slot) =>
             slot.id === slotId ? { ...slot, teams: newTeams } : slot
           ),
         })),
