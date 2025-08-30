@@ -3,14 +3,14 @@ import SignupModal from './SignupModal';
 import type { Slot } from '../types';
 import { useAdmin } from '../context/useAdmin';
 
-interface TimeslotCardProps {
+interface TerrainslotCardProps {
   slot: Slot;
   onUpdateTeams: (slotId: number, newTeams: string[]) => void;
 }
-export default function TimeslotCard({
+export default function TerrainslotCard({
   slot,
   onUpdateTeams,
-}: TimeslotCardProps) {
+}: TerrainslotCardProps) {
   const [open, setOpen] = useState(false);
   const { isAdmin, adminPassword } = useAdmin();
 

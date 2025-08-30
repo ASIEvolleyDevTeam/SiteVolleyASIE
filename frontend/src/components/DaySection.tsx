@@ -1,4 +1,4 @@
-import TimeslotCard from './TimeslotCard';
+import TimeslotCard from './TerrainslotCard';
 import type { Day } from '../types';
 
 interface DaySectionProps {
@@ -11,7 +11,7 @@ export default function DaySection({ day, onUpdateTeams }: DaySectionProps) {
     <div className="card bg-base-200 p-2 shadow-lg">
       <h3 className="mb-3 text-center text-lg font-semibold">{day.label}</h3>
       <div className="grid h-full grid-rows-3 gap-3">
-        {day.timeslots.map((slot, si) => (
+        {day.terrainslots.map((slot, si) => (
           <TimeslotCard key={si} slot={slot} onUpdateTeams={onUpdateTeams} />
         ))}
       </div>
