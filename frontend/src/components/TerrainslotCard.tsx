@@ -60,7 +60,7 @@ export default function TerrainslotCard({
             isAdmin && slot.teams[0] ? 'justify-between' : 'justify-center'
           }`}
         >
-          {isAdmin && slot.teams[0] && (
+          {isBookingOpen(slot.week_start_date) && isAdmin && slot.teams[0] && (
             <button
               className="btn btn-xs btn-error"
               onClick={() => handleUnregister(slot.teams[0])}
@@ -79,7 +79,7 @@ export default function TerrainslotCard({
           }`}
         >
           <span className="text-sm font-medium">{teamB}</span>
-          {isAdmin && slot.teams[1] && (
+          {isBookingOpen(slot.week_start_date) && isAdmin && slot.teams[1] && (
             <button
               className="btn btn-xs btn-error"
               onClick={() => handleUnregister(slot.teams[1])}
