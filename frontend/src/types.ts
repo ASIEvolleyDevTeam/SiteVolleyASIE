@@ -1,6 +1,6 @@
 export interface Slot {
   id: number;
-  time: string;
+  terrain: string;
   teams: string[];
 }
 

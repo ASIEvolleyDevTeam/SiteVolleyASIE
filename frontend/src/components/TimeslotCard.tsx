@@ -44,7 +44,7 @@ export default function TimeslotCard({
 
   return (
     <div className="card bg-base-100 flex flex-col shadow">
-      <h4 className="mt-2 text-center font-bold">{slot.time}</h4>
+      <h4 className="mt-2 text-center font-bold">{slot.terrain}</h4>
 
       <div className="flex flex-col items-center lg:flex-row">
         <div
