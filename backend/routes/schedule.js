@@ -45,7 +45,7 @@ router.get("/", async (req, res) => {
           acc[s.id] = {
             id: s.id,
             day: s.day,
-            time: s.time,
+            terrain: s.terrain,
             teams: [],
           };
         }
@@ -58,7 +58,9 @@ router.get("/", async (req, res) => {
         start_date: week.start_date,
         days: ["lundi", "jeudi"].map((day) => ({
           label: `${day}`,
-          timeslots: Object.values(groupedSlots).filter((sl) => sl.day === day),
+          terrainslots: Object.values(groupedSlots).filter(
+            (sl) => sl.day === day
+          ),
         })),
       };
     });
