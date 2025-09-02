@@ -7,8 +7,24 @@ export default function MatchSchedule() {
   const [weeks, setWeeks] = useState<Week[]>([]);
 
   useEffect(() => {
+    function getClosestMonday(date: Date): Date {
+      const d = new Date(date);
+      const day = d.getDay(); // 0=Sunday, 1=Monday, ..., 6=Saturday
+
+      if (day === 1) {
+        // already Monday
+        return d;
+      }
+
+      // otherwise, go backwards to previous Monday
+      const diff = (day + 6) % 7; // how many days since last Monday
+      d.setDate(d.getDate() - diff);
+      return d;
+    }
+
     const fetchWeeks = async () => {
-      const from = new Date();
+      const today = new Date();
+      const from = getClosestMonday(today); // 👈 normalize to Monday
       const to = new Date();
       to.setDate(to.getDate() + 21); // +2 semaines
       const res = await fetch(
