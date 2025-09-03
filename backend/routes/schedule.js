@@ -18,11 +18,29 @@ router.post("/admin/login", async (req, res) => {
 // GET /api/schedule?from=YYYY-MM-DD&to=YYYY-MM-DD
 router.get("/", async (req, res) => {
   try {
-    const { from, to } = req.query;
+    let { from, to } = req.query;
+
+    if (!from || !to) {
+      return res.status(400).json({ error: "from and to are required" });
+    }
+
+    // Convert to Date objects
+    const fromDate = new Date(from);
+    const toDate = new Date(to);
+
+    // Force fromDate to the Monday of its week
+    // (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
+    const day = fromDate.getDay();
+    const diff = (day === 0 ? -6 : 1) - day; // how many days to subtract to reach Monday
+    fromDate.setDate(fromDate.getDate() + diff);
+
+    // Format back to YYYY-MM-DD
+    const fromMonday = fromDate.toISOString().split("T")[0];
+    const toStr = toDate.toISOString().split("T")[0];
 
     const [weeks] = await db.query(
       "SELECT * FROM weeks WHERE start_date BETWEEN ? AND ? ORDER BY start_date ASC",
-      [from, to]
+      [fromMonday, toStr]
     );
 
     // récupérer slots + équipes pour chaque semaine
@@ -57,7 +75,7 @@ router.get("/", async (req, res) => {
         id: week.id,
         start_date: week.start_date,
         days: ["lundi", "jeudi"].map((day) => ({
-          label: `${day}`,
+          label: day,
           terrainslots: Object.values(groupedSlots).filter(
             (sl) => sl.day === day
           ),
