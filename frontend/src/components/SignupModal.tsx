@@ -82,6 +82,7 @@ export default function SignupModal({
             <option value="Thales DIS2">Thales DIS2</option>
             <option value="Arm1">Arm1</option>
             <option value="Arm2">Arm2</option>
+            <option value="Thales">Thales</option>
           </select>
         </div>
 
