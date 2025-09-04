@@ -83,6 +83,7 @@ export default function SignupModal({
             <option value="Arm1">Arm1</option>
             <option value="Arm2">Arm2</option>
             <option value="Thales">Thales</option>
+            <option value="EkipEkip">EkipEkip</option>
           </select>
         </div>
 
