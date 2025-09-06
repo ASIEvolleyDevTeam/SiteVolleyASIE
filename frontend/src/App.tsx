@@ -9,6 +9,7 @@ import Results from './pages/Results';
 import ChampionshipRules from './pages/ChampionshipRules';
 import ASIECup from './pages/ASIECup';
 import PostponedMatches from './pages/PostponedMatches';
+import Admin from './pages/Admin';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -28,6 +29,7 @@ function App() {
           <Route path="/asie-cup" element={<ASIECup />} />
           <Route path="/championship-rules" element={<ChampionshipRules />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </div>
       <Footer />

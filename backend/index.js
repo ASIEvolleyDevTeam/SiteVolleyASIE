@@ -13,6 +13,7 @@ const resultsRoutes = require("./routes/results");
 const postponedMatchesRoutes = require("./routes/postponed_matches");
 const cupRoutes = require("./routes/cup");
 const contactsRoutes = require("./routes/contacts");
+const superAdminRoutes = require("./routes/matches");
 
 const app = express();
 app.use(
@@ -33,6 +34,8 @@ app.use("/api/postponed_matches", postponedMatchesRoutes);
 app.use("/api/cupgames", cupRoutes);
 
 app.use("/api/contacts", contactsRoutes);
+
+app.use("/api/super_admin", superAdminRoutes);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
