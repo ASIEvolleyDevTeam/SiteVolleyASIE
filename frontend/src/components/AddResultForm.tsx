@@ -17,7 +17,9 @@ export const AddResultForm = () => {
     referee: '',
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
@@ -43,7 +45,7 @@ export const AddResultForm = () => {
   }
 
   return (
-    <div className="card items-center">
+    <div className="card bg-base-200 items-center">
       <form
         onSubmit={handleSubmit}
         className="flex w-full max-w-md flex-col gap-4 p-6"
@@ -60,22 +62,52 @@ export const AddResultForm = () => {
 
         <label className="flex flex-col">
           <span className="mb-1 font-semibold">Équipe 1</span>
-          <input
+          <select
             name="team1"
-            placeholder="Nom équipe 1"
+            className="select select-bordered w-full"
+            value={form.team1}
             onChange={handleChange}
-            className="input input-bordered"
-          />
+          >
+            <option value="">-- Sélectionner une équipe --</option>
+            <option value="EURECOM">EURECOM</option>
+            <option value="Synopsys">Synopsys</option>
+            <option value="NXP2">NXP2</option>
+            <option value="FortiTeam">FortiTeam</option>
+            <option value="NXP1">NXP1</option>
+            <option value="AirFrance">AirFrance</option>
+            <option value="SiMoVolley">SiMoVolley</option>
+            <option value="Thales DIS1">Thales DIS1</option>
+            <option value="Thales DIS2">Thales DIS2</option>
+            <option value="Arm1">Arm1</option>
+            <option value="Arm2">Arm2</option>
+            <option value="Thales">Thales</option>
+            <option value="EkipEkip">EkipEkip</option>
+          </select>
         </label>
 
         <label className="flex flex-col">
           <span className="mb-1 font-semibold">Équipe 2</span>
-          <input
+          <select
             name="team2"
-            placeholder="Nom équipe 2"
+            className="select select-bordered w-full"
+            value={form.team2}
             onChange={handleChange}
-            className="input input-bordered"
-          />
+          >
+            <option value="">-- Sélectionner une équipe --</option>
+            <option value="EURECOM">EURECOM</option>
+            <option value="Synopsys">Synopsys</option>
+            <option value="NXP2">NXP2</option>
+            <option value="FortiTeam">FortiTeam</option>
+            <option value="NXP1">NXP1</option>
+            <option value="AirFrance">AirFrance</option>
+            <option value="SiMoVolley">SiMoVolley</option>
+            <option value="Thales DIS1">Thales DIS1</option>
+            <option value="Thales DIS2">Thales DIS2</option>
+            <option value="Arm1">Arm1</option>
+            <option value="Arm2">Arm2</option>
+            <option value="Thales">Thales</option>
+            <option value="EkipEkip">EkipEkip</option>
+          </select>
         </label>
 
         <label className="flex flex-col">
