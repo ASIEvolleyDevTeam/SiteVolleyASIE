@@ -14,3 +14,4 @@ router.post("/login", async (req, res) => {
     .status(403)
     .json({ success: false, error: "Mot de passe invalide" });
 });
+module.exports = router;
