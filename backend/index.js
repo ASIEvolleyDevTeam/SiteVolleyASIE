@@ -13,7 +13,7 @@ const resultsRoutes = require("./routes/results");
 const postponedMatchesRoutes = require("./routes/postponed_matches");
 const cupRoutes = require("./routes/cup");
 const contactsRoutes = require("./routes/contacts");
-const superAdminRoutes = require("./routes/matches");
+const superAdminRoutes = require("./routes/super_admin");
 
 const app = express();
 app.use(
