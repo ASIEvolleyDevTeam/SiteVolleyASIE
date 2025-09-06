@@ -32,6 +32,8 @@ router.get("/", async (req, res) => {
 // POST /api/results
 router.post("/", async (req, res) => {
   try {
+    console.log("Payload reçu:", req.body);
+
     const {
       team1,
       team2,
@@ -44,19 +46,30 @@ router.post("/", async (req, res) => {
     } = req.body;
 
     // look up team IDs
-    const [team1Row] = await db.query("SELECT id FROM teams WHERE name = ?", [
+    const [team1Rows] = await db.query("SELECT id FROM teams WHERE name = ?", [
       team1,
     ]);
-    const [team2Row] = await db.query("SELECT id FROM teams WHERE name = ?", [
+    const [team2Rows] = await db.query("SELECT id FROM teams WHERE name = ?", [
       team2,
     ]);
 
-    if (!team1Row || !team2Row) {
-      return res.status(400).json({ error: "Unknown team name" });
+    console.log("Résultat SELECT team1:", team1Rows);
+    console.log("Résultat SELECT team2:", team2Rows);
+
+    if (!team1Rows.length || !team2Rows.length) {
+      return res.status(400).json({
+        error: "Unknown team name",
+        details: {
+          team1,
+          team2,
+          team1QueryResult: team1Rows,
+          team2QueryResult: team2Rows,
+        },
+      });
     }
 
-    const team1Ref = team1Row.id;
-    const team2Ref = team2Row.id;
+    const team1Ref = team1Rows[0].id;
+    const team2Ref = team2Rows[0].id;
 
     // compute sets won
     let sets_team1 = 0,
@@ -71,7 +84,7 @@ router.post("/", async (req, res) => {
     }
 
     // compute winner
-    let winnerRef = 0;
+    let winnerRef = null;
     if (sets_team1 > sets_team2) winnerRef = team1Ref;
     else if (sets_team2 > sets_team1) winnerRef = team2Ref;
 
@@ -88,7 +101,7 @@ router.post("/", async (req, res) => {
         refNoShow, team1NoShow, team2NoShow)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0, 0)`,
       [
-        0, // slotRef (if you don’t track it yet)
+        0, // slotRef (à adapter)
         team1Ref,
         team2Ref,
         winnerRef,
@@ -107,8 +120,8 @@ router.post("/", async (req, res) => {
 
     res.json({ success: true });
   } catch (err) {
-    console.error("Erreur insertion résultat", err);
-    res.status(500).json({ error: "Erreur serveur" });
+    console.error("Erreur insertion résultat:", err);
+    res.status(500).json({ error: "Erreur serveur", details: err.message });
   }
 });
 
