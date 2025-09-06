@@ -90,7 +90,7 @@ router.post("/", async (req, res) => {
     else sets_team2++;
     if (set2_team1 > set2_team2) sets_team1++;
     else sets_team2++;
-    if (set3_team1 !== null && set3_team2 !== null) {
+    if (set3_team1 !== 0 && set3_team2 !== 0) {
       if (set3_team1 > set3_team2) sets_team1++;
       else sets_team2++;
     }
@@ -101,8 +101,8 @@ router.post("/", async (req, res) => {
     else if (sets_team2 > sets_team1) winnerRef = team2Ref;
 
     // compute points
-    const points_team1 = set1_team1 + set2_team1 + (set3_team1 || 0);
-    const points_team2 = set1_team2 + set2_team2 + (set3_team2 || 0);
+    const points_team1 = set1_team1 + set2_team1 + set3_team1;
+    const points_team2 = set1_team2 + set2_team2 + set3_team2;
 
     // insert
     await db.query(

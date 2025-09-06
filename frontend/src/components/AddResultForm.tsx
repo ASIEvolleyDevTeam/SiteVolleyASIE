@@ -14,7 +14,6 @@ export const AddResultForm = () => {
     set2_team2: 0,
     set3_team1: null,
     set3_team2: null,
-    referee: '',
   });
 
   const handleChange = (
@@ -64,7 +63,6 @@ export const AddResultForm = () => {
           set2_team2: 0,
           set3_team1: null,
           set3_team2: null,
-          referee: '',
         });
       } else {
         alert(
