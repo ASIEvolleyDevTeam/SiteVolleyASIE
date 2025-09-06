@@ -16,11 +16,13 @@ export const SuperAdminLogin = () => {
 
   if (isSuperAdmin) {
     return (
-      <div className="bg-base-200 flex gap-2 rounded border p-4">
-        <p className="flex-1">✅ Connecté en tant qu’admin résultats</p>
-        <button onClick={logoutSuperAdmin} className="btn btn-secondary">
-          Déconnexion
-        </button>
+      <div className="card items-center">
+        <div className="bg-base-200 flex gap-2 rounded p-4">
+          <p className="flex-1">Connecté en tant que super admin</p>
+          <button onClick={logoutSuperAdmin} className="btn btn-secondary">
+            Déconnexion
+          </button>
+        </div>
       </div>
     );
   }

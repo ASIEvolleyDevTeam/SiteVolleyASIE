@@ -44,17 +44,101 @@ export const AddResultForm = () => {
 
   return (
     <div className="card items-center">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-2 border p-4">
-        <input name="date" placeholder="Date" onChange={handleChange} />
-        <input name="team1" placeholder="Équipe 1" onChange={handleChange} />
-        <input name="team2" placeholder="Équipe 2" onChange={handleChange} />
-        <input name="set1_team1" type="number" onChange={handleChange} />
-        <input name="set1_team2" type="number" onChange={handleChange} />
-        <input name="set2_team1" type="number" onChange={handleChange} />
-        <input name="set2_team2" type="number" onChange={handleChange} />
-        <input name="set3_team1" type="number" onChange={handleChange} />
-        <input name="set3_team2" type="number" onChange={handleChange} />
-        <button type="submit" className="btn btn-primary">
+      <form
+        onSubmit={handleSubmit}
+        className="flex w-full max-w-md flex-col gap-4 p-6"
+      >
+        <label className="flex flex-col">
+          <span className="mb-1 font-semibold">Date</span>
+          <input
+            name="date"
+            type="date"
+            onChange={handleChange}
+            className="input input-bordered"
+          />
+        </label>
+
+        <label className="flex flex-col">
+          <span className="mb-1 font-semibold">Équipe 1</span>
+          <input
+            name="team1"
+            placeholder="Nom équipe 1"
+            onChange={handleChange}
+            className="input input-bordered"
+          />
+        </label>
+
+        <label className="flex flex-col">
+          <span className="mb-1 font-semibold">Équipe 2</span>
+          <input
+            name="team2"
+            placeholder="Nom équipe 2"
+            onChange={handleChange}
+            className="input input-bordered"
+          />
+        </label>
+
+        <label className="flex flex-col">
+          <span className="mb-1 font-semibold">Set 1</span>
+          <div className="flex gap-2">
+            <input
+              name="set1_team1"
+              type="number"
+              onChange={handleChange}
+              className="input input-bordered w-20"
+              placeholder="É1"
+            />
+            <input
+              name="set1_team2"
+              type="number"
+              onChange={handleChange}
+              className="input input-bordered w-20"
+              placeholder="É2"
+            />
+          </div>
+        </label>
+
+        <label className="flex flex-col">
+          <span className="mb-1 font-semibold">Set 2</span>
+          <div className="flex gap-2">
+            <input
+              name="set2_team1"
+              type="number"
+              onChange={handleChange}
+              className="input input-bordered w-20"
+              placeholder="É1"
+            />
+            <input
+              name="set2_team2"
+              type="number"
+              onChange={handleChange}
+              className="input input-bordered w-20"
+              placeholder="É2"
+            />
+          </div>
+        </label>
+
+        <label className="flex flex-col">
+          <span className="mb-1 font-semibold">Set 3 (optionnel)</span>
+          <div className="flex gap-2">
+            <input
+              name="set3_team1"
+              type="number"
+              onChange={handleChange}
+              className="input input-bordered w-20"
+              placeholder="É1"
+            />
+            <input
+              name="set3_team2"
+              type="number"
+              onChange={handleChange}
+              className="input input-bordered w-20"
+              placeholder="É2"
+            />
+          </div>
+        </label>
+
+        <button type="submit" className="btn btn-primary mt-4">
           Ajouter
         </button>
       </form>
