@@ -81,7 +81,7 @@ router.post("/", async (req, res) => {
 
     // insert
     await db.query(
-      `INSERT INTO asievolley06.games
+      `INSERT INTO games
        (slotRef, team1Ref, team2Ref, winnerRef,
         set1_team1, set1_team2, set2_team1, set2_team2, set3_team1, set3_team2,
         sets_team1, sets_team2, points_team1, points_team2,
