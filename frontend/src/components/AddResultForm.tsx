@@ -28,16 +28,55 @@ export const AddResultForm = () => {
     e.preventDefault();
     if (!isSuperAdmin) return;
 
-    await fetch(`${import.meta.env.VITE_API_BASE}/api/results`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-admin-password': superAdminPassword || '',
-      },
-      body: JSON.stringify(form),
-    });
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE}/api/results`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-admin-password': superAdminPassword || '',
+        },
+        body: JSON.stringify(form),
+      });
 
-    alert('Résultat ajouté !');
+      if (!res.ok) {
+        // backend returned an error (400 / 403 / 500…)
+        const err = await res.json().catch(() => ({}));
+        alert(
+          `Erreur lors de l'ajout du résultat: ${
+            err.error || res.statusText || 'Erreur inconnue'
+          }`
+        );
+        return;
+      }
+
+      const data = await res.json();
+
+      if (data.success) {
+        alert('✅ Résultat ajouté avec succès !');
+        // facultatif: reset le formulaire
+        setForm({
+          date: '',
+          team1: '',
+          team2: '',
+          set1_team1: 0,
+          set1_team2: 0,
+          set2_team1: 0,
+          set2_team2: 0,
+          set3_team1: null,
+          set3_team2: null,
+          referee: '',
+        });
+      } else {
+        alert(
+          `⚠️ Le serveur n'a pas confirmé l'ajout: ${
+            data.error || 'raison inconnue'
+          }`
+        );
+      }
+    } catch (err) {
+      console.error('Erreur réseau:', err);
+      alert('Impossible de contacter le serveur.');
+    }
   };
 
   if (!isSuperAdmin) {
@@ -45,7 +84,7 @@ export const AddResultForm = () => {
   }
 
   return (
-    <div className="card bg-base-200 items-center">
+    <div className="card bg-base-200 max-w-6xl items-center">
       <form
         onSubmit={handleSubmit}
         className="flex w-full max-w-md flex-col gap-4 p-6"
