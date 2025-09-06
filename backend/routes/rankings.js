@@ -58,7 +58,6 @@ router.get("/:poolId", async (req, res) => {
       FROM teams t
       JOIN teams_pools tp ON tp.teamRef = t.id
       LEFT JOIN games g ON g.team1Ref = t.id OR g.team2Ref = t.id
-      LEFT JOIN players p ON g.refereeRef = p.id
       WHERE tp.poolRef = ?
       GROUP BY t.id
       ORDER BY victory DESC, set_ratio DESC

@@ -20,7 +20,6 @@ router.get("/:teamName", async (req, res) => {
       JOIN slots ON g.slotRef = slots.id
       JOIN teams t1 ON g.team1Ref = t1.id
       JOIN teams t2 ON g.team2Ref = t2.id
-      LEFT JOIN players p ON g.refereeRef = p.id
       WHERE t1.name = ? OR t2.name = ?
       ORDER BY slots.date ASC
     `,
