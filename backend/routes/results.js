@@ -35,6 +35,7 @@ router.post("/", async (req, res) => {
     console.log("Payload reçu:", req.body);
 
     const {
+      date,
       team1,
       team2,
       set1_team1,
@@ -44,6 +45,17 @@ router.post("/", async (req, res) => {
       set3_team1,
       set3_team2,
     } = req.body;
+
+    if (!date || !team1 || !team2) {
+      return res.status(400).json({ error: "Champs obligatoires manquants" });
+    }
+
+    // create time slot
+    const [slotResult] = await db.query("INSERT INTO slots (date) VALUES (?)", [
+      date,
+    ]);
+    const slotRef = slotResult.insertId;
+    console.log("Nouveau slot créé:", slotRef);
 
     // look up team IDs
     const [team1Rows] = await db.query("SELECT id FROM teams WHERE name = ?", [
@@ -101,7 +113,7 @@ router.post("/", async (req, res) => {
         refNoShow, team1NoShow, team2NoShow)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0, 0)`,
       [
-        0, // slotRef (à adapter)
+        slotRef,
         team1Ref,
         team2Ref,
         winnerRef,
