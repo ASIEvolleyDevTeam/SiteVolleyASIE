@@ -52,7 +52,6 @@ export const RankingTable = ({ poolId }: { poolId: number }) => {
             <th>Gagnés</th>
             <th>Perdus</th>
             <th>Forfait</th>
-            <th>Arbitrage</th>
             <th>Pour</th>
             <th>Contre</th>
             <th>Ratio</th>
