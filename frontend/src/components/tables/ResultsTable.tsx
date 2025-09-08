@@ -11,7 +11,6 @@ type MatchResult = {
   set2_team2: number;
   set3_team1: number | null;
   set3_team2: number | null;
-  referee: string;
 };
 
 export const ResultsTable = () => {

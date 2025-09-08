@@ -12,7 +12,6 @@ router.get("/:teamName", async (req, res) => {
         DATE_FORMAT(slots.date, '%Y-%m-%d') AS date,
         t1.name AS team1,
         t2.name AS team2,
-        CONCAT(p.prenom, ' ', p.nom) AS referee,
         g.set1_team1, g.set1_team2,
         g.set2_team1, g.set2_team2,
         g.set3_team1, g.set3_team2

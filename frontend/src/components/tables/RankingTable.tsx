@@ -7,7 +7,6 @@ type Ranking = {
   victory: number;
   defeat: number;
   no_show: number;
-  no_referee: number;
   set_for: number;
   set_against: number;
   set_ratio: number;
@@ -70,7 +69,6 @@ export const RankingTable = ({ poolId }: { poolId: number }) => {
               <td>{team.victory}</td>
               <td>{team.defeat}</td>
               <td>{team.no_show}</td>
-              <td>{team.no_referee}</td>
               <td>{team.set_for}</td>
               <td>{team.set_against}</td>
               <td>{team.set_ratio}</td>

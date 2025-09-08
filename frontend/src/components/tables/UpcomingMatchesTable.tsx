@@ -5,7 +5,6 @@ type Match = {
   date: string;
   team1: string;
   team2: string;
-  referee: string;
 };
 
 export const UpcomingMatchesTable = () => {

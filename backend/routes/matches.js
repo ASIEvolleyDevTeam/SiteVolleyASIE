@@ -23,7 +23,6 @@ router.get("/upcoming", async (req, res) => {
       JOIN slots ON games.slotRef = slots.id
       JOIN teams t1 ON games.team1Ref = t1.id
       JOIN teams t2 ON games.team2Ref = t2.id
-      LEFT JOIN players p ON games.refereeRef = p.id
       WHERE slots.date >= CURDATE()
       ORDER BY slots.date ASC
       LIMIT 10

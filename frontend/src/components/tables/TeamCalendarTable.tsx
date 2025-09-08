@@ -11,7 +11,6 @@ type Match = {
   set2_team2: number | null;
   set3_team1: number | null;
   set3_team2: number | null;
-  referee: string | null;
 };
 
 export const TeamCalendarTable = ({ teamName }: { teamName: string }) => {

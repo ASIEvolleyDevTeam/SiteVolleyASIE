@@ -30,9 +30,6 @@ router.get("/:poolId", async (req, res) => {
         SUM(CASE WHEN t.id = g.team1Ref THEN g.team1NoShow
                  WHEN t.id = g.team2Ref THEN g.team2NoShow
                  ELSE 0 END) AS no_show,
-        SUM(CASE WHEN g.refereeRef IS NULL THEN 0 ELSE 
-                 CASE WHEN p.teamId = t.id THEN 0 ELSE 1 END
-             END) AS no_referee,
         ROUND(
           SUM(CASE WHEN t.id = g.team1Ref THEN g.sets_team1
                    WHEN t.id = g.team2Ref THEN g.sets_team2
@@ -60,7 +57,7 @@ router.get("/:poolId", async (req, res) => {
       LEFT JOIN games g ON g.team1Ref = t.id OR g.team2Ref = t.id
       WHERE tp.poolRef = ?
       GROUP BY t.id
-      ORDER BY victory DESC, set_ratio DESC
+      ORDER BY points DESC
       `,
       [poolId]
     );
