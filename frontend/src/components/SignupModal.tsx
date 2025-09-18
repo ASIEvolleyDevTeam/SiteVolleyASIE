@@ -71,7 +71,7 @@ export default function SignupModal({
             onChange={(e) => setTeam(e.target.value)}
           >
             <option value="">-- Sélectionner une équipe --</option>
-            <option value="EURECOM">EURECOM</option>
+            <option value="EURECOM 1">EURECOM 1</option>
             <option value="Synopsys">Synopsys</option>
             <option value="NXP2">NXP2</option>
             <option value="FortiTeam">FortiTeam</option>
