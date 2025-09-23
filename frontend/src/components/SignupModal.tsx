@@ -85,6 +85,8 @@ export default function SignupModal({
             <option value="Thales">Thales</option>
             <option value="EkipEkip">EkipEkip</option>
             <option value="EURECOM 2">EURECOM 2</option>
+            <option value="Renault">Renault</option>
+            <option value="InDeMENTAble">InDeMENTAble</option>
           </select>
         </div>
 
