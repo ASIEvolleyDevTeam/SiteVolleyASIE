@@ -87,6 +87,7 @@ export default function SignupModal({
             <option value="EURECOM 2">EURECOM 2</option>
             <option value="Renault">Renault</option>
             <option value="InDeMENTAble">InDeMENTAble</option>
+            <option value="CDS">CADENCE DESIGN SYSTEMS</option>
           </select>
         </div>
 
