@@ -1,5 +1,5 @@
-import MatchSchedule from '../components/MatchSchelude';
-import { AdminProvider } from '../context/AdminProvider';
+// import MatchSchedule from '../components/MatchSchelude';
+// import { AdminProvider } from '../context/AdminProvider';
 
 export const Home = () => {
   return (
@@ -15,6 +15,7 @@ export const Home = () => {
           <h2 className="mb-6 text-center text-4xl font-bold">
             Prochains matchs
           </h2>
+          {/*
           <div className="bg-warning/20 border-warning text-warning-800 rounded border-l-4 px-4 py-3 text-base">
             <span className="font-semibold">Important :</span> Si un match n'est
             pas annoncé ici, vous ne serez pas prioritaires pour jouer vis-à-vis
@@ -24,6 +25,7 @@ export const Home = () => {
           <AdminProvider>
             <MatchSchedule />
           </AdminProvider>
+          */}
           <p className="text-center">
             Pour toute question contactez Clément avec l'adresse mail{' '}
             <a
