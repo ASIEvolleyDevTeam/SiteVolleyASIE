@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
       JOIN slots ON games.slotRef = slots.id
       JOIN teams t1 ON games.team1Ref = t1.id
       JOIN teams t2 ON games.team2Ref = t2.id
-      WHERE DATE(slots.date) > DATE('2025-09-01')
+      WHERE DATE(slots.date) > CURDATE()
       ORDER BY DATE(slots.date) ASC
     `);
     res.json(rows);
