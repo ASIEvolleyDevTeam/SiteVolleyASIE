@@ -6,14 +6,15 @@ router.get("/", async (req, res) => {
   try {
     const [rows] = await db.query(`
       SELECT 
-        DATE_FORMAT(slots.date, '%d/%m') AS date,
-        t1.name AS team1,
-        t2.name AS team2
+      DATE_FORMAT(slots.date, '%d/%m') AS date,
+      t1.name AS team1,
+      t2.name AS team2
       FROM games
       JOIN slots ON games.slotRef = slots.id
       JOIN teams t1 ON games.team1Ref = t1.id
       JOIN teams t2 ON games.team2Ref = t2.id
-      ORDER BY slots.date DESC
+      WHERE DATE(slots.date) > DATE('2025-09-01')
+      ORDER BY DATE(slots.date) ASC
     `);
     res.json(rows);
   } catch (err) {
