@@ -1,6 +1,8 @@
 // import MatchSchedule from '../components/MatchSchelude';
 // import { AdminProvider } from '../context/AdminProvider';
 
+import GlobalCalendarPreviewTable from '../components/tables/GlobalCalendarPreviewTable';
+
 export const Home = () => {
   return (
     <main className="flex min-h-[calc(100vh-142px)] flex-col lg:flex-row">
@@ -26,6 +28,7 @@ export const Home = () => {
             <MatchSchedule />
           </AdminProvider>
           */}
+          <GlobalCalendarPreviewTable />
           <p className="text-center">
             Pour toute question contactez Clément avec l'adresse mail{' '}
             <a
