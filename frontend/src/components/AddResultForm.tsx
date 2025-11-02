@@ -82,8 +82,8 @@ export const AddResultForm = () => {
   }
 
   return (
-    <div className="card bg-base-200 items-center p-6">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-6">
+    <div className="card bg-base-200 mt-2 items-center p-6">
+      <form onSubmit={handleSubmit} className="gap-4 p-6">
         <label className="flex flex-col">
           <span className="mb-1 font-semibold">Date</span>
           <input
