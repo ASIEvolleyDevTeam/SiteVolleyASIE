@@ -88,19 +88,25 @@ const MenuList = ({ mobile = false }: { mobile?: boolean }) => (
         </summary>
         <ul className="bg-base-200 z-50 p-2 text-center">
           {[
-            'Amadeus',
-            'Ansys',
-            'arm1',
-            'arm2',
-            'EURECOM',
+            'AirFrance',
+            'Arm1',
             'FortiTeam',
-            'Instant System 1',
-            'Instant System 2',
-            'MENTAp',
+            'Renault',
+            'Amadeus 2',
+            'Arm2',
+            'CADENCE',
+            'InDeMENTAble',
+            'Thales DIS1',
+            'Synopsys',
+            'THALES',
+            'Amadeus 1',
             'NXP1',
+            'EURECOM 1',
+            'SiMoVolley',
+            'EkipEkip',
+            'EURECOM 2',
             'NXP2',
-            'Renault-Ampere',
-            'Thales',
+            'Thales DIS2',
           ].map((team) => (
             <li key={team}>
               <a
