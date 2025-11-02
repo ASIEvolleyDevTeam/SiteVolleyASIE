@@ -1,0 +1,194 @@
+Date,Equipe 1,Equipe 2,Coupe
+03/11/2025,AirFrance,Amadeus 1,non
+03/11/2025,arm1,EURECOM 1,non
+03/11/2025,FortiTeam,NXP1,non
+04/11/2025,Renault,SiMoVolley,non
+06/11/2025,Amadeus 2,Synopsys,non
+06/11/2025,arm2,EkipEkip,non
+06/11/2025,CADENCE,EURECOM 2,non
+10/11/2025,InDeMENTAble,NXP2,non
+10/11/2025,Thales DIS1,Thales DIS2,non
+10/11/2025,Synopsys,arm2,non
+13/11/2025,THALES,AirFrance,non
+13/11/2025,Amadeus 1,arm1,non
+13/11/2025,NXP1,Renault,non
+17/11/2025,EURECOM 1,FortiTeam,non
+17/11/2025,SiMoVolley,THALES,non
+17/11/2025,AirFrance,arm1,non
+18/11/2025,EkipEkip,CADENCE,non
+20/11/2025,EURECOM 2,InDeMENTAble,non
+20/11/2025,NXP2,Thales DIS1,non
+20/11/2025,Thales DIS2,Amadeus 2,non
+24/11/2025,Synopsys,EkipEkip,non
+24/11/2025,arm2,CADENCE,non
+24/11/2025,EURECOM 2,NXP2,non
+25/11/2025,Amadeus 1,EURECOM 1,non
+27/11/2025,FortiTeam,Renault,non
+27/11/2025,NXP1,SiMoVolley,non
+27/11/2025,THALES,arm1,non
+01/12/2025,AirFrance,EURECOM 1,non
+01/12/2025,Amadeus 1,FortiTeam,non
+01/12/2025,NXP1,THALES,non
+02/12/2025,InDeMENTAble,Thales DIS1,non
+04/12/2025,Thales DIS2,arm2,non
+04/12/2025,Amadeus 2,EkipEkip,non
+04/12/2025,EURECOM 2,Synopsys,non
+08/12/2025,EURECOM 2,Thales DIS1,non
+08/12/2025,InDeMENTAble,Thales DIS2,non
+08/12/2025,NXP2,Amadeus 2,non
+09/12/2025,Synopsys,CADENCE,non
+11/12/2025,Amadeus 1,NXP1,non
+11/12/2025,arm1,Renault,non
+11/12/2025,THALES,FortiTeam,non
+15/12/2025,EURECOM 1,SiMoVolley,non
+15/12/2025,AirFrance,NXP1,non
+15/12/2025,Amadeus 1,Renault,non
+16/12/2025,Thales DIS1,Synopsys,non
+18/12/2025,EURECOM 2,arm2,non
+18/12/2025,EkipEkip,NXP2,non
+18/12/2025,CADENCE,Amadeus 2,non
+05/01/2026,CADENCE,Renault,oui
+05/01/2026,Amadeus 1,Thales DIS1,oui
+05/01/2026,Amadeus 2,arm2,oui
+06/01/2026,InDeMENTAble,EURECOM 1,oui
+08/01/2026,AirFrance,EkipEkip,oui
+08/01/2026,SiMoVolley,EURECOM 2,oui
+08/01/2026,NXP1,Thales DIS2,oui
+12/01/2026,InDeMENTAble,Synopsys,non
+12/01/2026,Thales DIS2,EkipEkip,non
+12/01/2026,EURECOM 2,Amadeus 2,non
+13/01/2026,Thales DIS1,arm2,non
+15/01/2026,arm1,FortiTeam,non
+15/01/2026,THALES,EURECOM 1,non
+15/01/2026,SiMoVolley,AirFrance,non
+19/01/2026,Renault,THALES,non
+19/01/2026,NXP1,EURECOM 1,non
+19/01/2026,SiMoVolley,Amadeus 1,non
+20/01/2026,Synopsys,NXP2,oui
+22/01/2026,THALES,?,oui
+22/01/2026,arm1,?,oui
+22/01/2026,FortiTeam,?,oui
+26/01/2026,Amadeus 2,Thales DIS1,non
+26/01/2026,AirFrance,FortiTeam,non
+26/01/2026,InDeMENTAble,CADENCE,non
+27/01/2026,,,non
+29/01/2026,Thales DIS2,NXP2,non
+29/01/2026,EkipEkip,EURECOM 2,non
+29/01/2026,Amadeus 2,arm2,non
+02/02/2026,Thales DIS1,CADENCE,non
+02/02/2026,Synopsys,NXP2,non
+02/02/2026,InDeMENTAble,Amadeus 2,non
+03/02/2026,Thales DIS2,Synopsys,non
+05/02/2026,arm1,NXP1,non
+05/02/2026,Renault,AirFrance,non
+05/02/2026,SiMoVolley,FortiTeam,non
+09/02/2026,EURECOM 1,Renault,non
+09/02/2026,THALES,Amadeus 1,non
+09/02/2026,arm1,SiMoVolley,non
+10/02/2026,EURECOM 2,Thales DIS2,non
+12/02/2026,arm2,InDeMENTAble,non
+12/02/2026,Thales DIS1,EkipEkip,non
+12/02/2026,CADENCE,NXP2,non
+02/03/2026,Thales DIS2,CADENCE,non
+02/03/2026,EkipEkip,InDeMENTAble,non
+02/03/2026,arm2,NXP2,non
+03/03/2026,,,non
+05/03/2026,Amadeus 1,AirFrance,non
+05/03/2026,EURECOM 1,arm1,non
+05/03/2026,NXP1,FortiTeam,non
+09/03/2026,SiMoVolley,Renault,non
+09/03/2026,AirFrance,THALES,non
+09/03/2026,arm1,Amadeus 1,non
+10/03/2026,FortiTeam,EURECOM 1,non
+12/03/2026,Synopsys,Amadeus 2,non
+12/03/2026,EkipEkip,arm2,non
+12/03/2026,EURECOM 2,CADENCE,non
+16/03/2026,NXP2,InDeMENTAble,non
+16/03/2026,Thales DIS2,Thales DIS1,non
+16/03/2026,arm2,Synopsys,non
+17/03/2026,?,?,oui
+19/03/2026,?,?,oui
+19/03/2026,?,?,oui
+19/03/2026,?,?,oui
+23/03/2026,Renault,NXP1,non
+23/03/2026,THALES,SiMoVolley,non
+23/03/2026,EURECOM 1,Amadeus 1,non
+24/03/2026,CADENCE,EkipEkip,non
+26/03/2026,InDeMENTAble,EURECOM 2,non
+26/03/2026,Thales DIS1,NXP2,non
+26/03/2026,Amadeus 2,Thales DIS2,non
+30/03/2026,EkipEkip,Synopsys,non
+30/03/2026,CADENCE,arm2,non
+30/03/2026,NXP2,EURECOM 2,non
+31/03/2026,,,non
+02/04/2026,arm1,AirFrance,non
+02/04/2026,Renault,FortiTeam,non
+02/04/2026,SiMoVolley,NXP1,non
+07/04/2026,Thales DIS1,InDeMENTAble,non
+09/04/2026,arm2,Thales DIS2,non
+09/04/2026,EkipEkip,Amadeus 2,non
+09/04/2026,CADENCE,Synopsys,non
+27/04/2026,arm1,THALES,non
+27/04/2026,EURECOM 1,AirFrance,non
+27/04/2026,FortiTeam,Amadeus 1,non
+28/04/2026,THALES,NXP1,non
+30/04/2026,?,?,oui
+30/04/2026,?,?,oui
+30/04/2026,,,non
+04/05/2026,Thales DIS1,EURECOM 2,non
+04/05/2026,Thales DIS2,InDeMENTAble,non
+04/05/2026,Amadeus 2,NXP2,non
+05/05/2026,,,non
+07/05/2026,NXP1,Amadeus 1,non
+07/05/2026,Renault,arm1,non
+07/05/2026,SiMoVolley,EURECOM 1,non
+11/05/2026,FortiTeam,THALES,non
+11/05/2026,NXP1,AirFrance,non
+11/05/2026,Renault,Amadeus 1,non
+12/05/2026,Synopsys,InDeMENTAble,non
+18/05/2026,EkipEkip,Thales DIS2,non
+18/05/2026,Amadeus 2,EURECOM 2,non
+18/05/2026,arm2,Thales DIS1,non
+19/05/2026,,,non
+21/05/2026,FortiTeam,arm1,non
+21/05/2026,EURECOM 1,THALES,non
+21/05/2026,AirFrance,SiMoVolley,non
+26/05/2026,Synopsys,Thales DIS1,non
+28/05/2026,arm2,EURECOM 2,non
+28/05/2026,NXP2,EkipEkip,non
+28/05/2026,Amadeus 2,CADENCE,non
+01/06/2026,THALES,Renault,non
+01/06/2026,EURECOM 1,NXP1,non
+01/06/2026,Amadeus 1,SiMoVolley,non
+02/06/2026,CADENCE,InDeMENTAble,non
+04/06/2026,NXP2,Thales DIS2,non
+04/06/2026,EURECOM 2,EkipEkip,non
+04/06/2026,arm2,Amadeus 2,non
+08/06/2026,CADENCE,Thales DIS1,non
+08/06/2026,NXP2,Synopsys,non
+08/06/2026,Amadeus 2,InDeMENTAble,non
+09/06/2026,Synopsys,Thales DIS2,non
+11/06/2026,NXP1,arm1,non
+11/06/2026,AirFrance,Renault,non
+11/06/2026,FortiTeam,SiMoVolley,non
+15/06/2026,Renault,EURECOM 1,non
+15/06/2026,Amadeus 1,THALES,non
+15/06/2026,SiMoVolley,arm1,non
+16/06/2026,?,?,oui
+18/06/2026,Thales DIS2,EURECOM 2,non
+18/06/2026,InDeMENTAble,arm2,non
+18/06/2026,EkipEkip,Thales DIS1,non
+22/06/2026,NXP2,CADENCE,non
+22/06/2026,Synopsys,EURECOM 2,non
+22/06/2026,InDeMENTAble,EkipEkip,non
+23/06/2026,NXP2,arm2,non
+25/06/2026,CADENCE,Thales DIS2,non
+25/06/2026,Thales DIS1,Amadeus 2,non
+25/06/2026,FortiTeam,AirFrance,non
+29/06/2026,,,non
+29/06/2026,,,non
+29/06/2026,,,non
+30/06/2026,,,non
+02/07/2026,,,non
+02/07/2026,,,non
+02/07/2026,,,non
