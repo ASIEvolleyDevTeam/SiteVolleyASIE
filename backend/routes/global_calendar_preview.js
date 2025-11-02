@@ -15,12 +15,12 @@ router.get("/", async (req, res) => {
       JOIN teams t2 ON games.team2Ref = t2.id
       WHERE DATE(slots.date) > CURDATE()
       ORDER BY DATE(slots.date) ASC
-      LIMIT 8
+      LIMIT 6
     `);
     res.json(rows);
   } catch (err) {
-    console.error("Error fetching global calendar:", err);
-    res.status(500).json({ error: "Failed to fetch global calendar" });
+    console.error("Error fetching global calendar preview:", err);
+    res.status(500).json({ error: "Failed to fetch global calendar preview" });
   }
 });
 

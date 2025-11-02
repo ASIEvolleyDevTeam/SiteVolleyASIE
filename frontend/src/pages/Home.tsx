@@ -1,9 +1,11 @@
 // import MatchSchedule from '../components/MatchSchelude';
 // import { AdminProvider } from '../context/AdminProvider';
 
+import { useNavigate } from 'react-router-dom';
 import GlobalCalendarPreviewTable from '../components/tables/GlobalCalendarPreviewTable';
 
 export const Home = () => {
+  const navigate = useNavigate();
   return (
     <main className="flex min-h-[calc(100vh-142px)] flex-col lg:flex-row">
       <section className="flex flex-col items-center justify-center p-8 text-center lg:w-1/2">
@@ -29,6 +31,12 @@ export const Home = () => {
           </AdminProvider>
           */}
           <GlobalCalendarPreviewTable />
+          <button
+            onClick={() => navigate('/global-calendar')}
+            className="btn btn-primary mx-auto mt-4 mb-2 block"
+          >
+            Voir tout le calendrier global
+          </button>
           <p className="text-center">
             Pour toute question contactez Clément avec l'adresse mail{' '}
             <a
