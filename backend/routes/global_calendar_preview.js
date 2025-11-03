@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
       JOIN teams t2 ON games.team2Ref = t2.id
       WHERE DATE(slots.date) >= CURDATE()
       ORDER BY DATE(slots.date) ASC
-      LIMIT 6
+      LIMIT 8
     `);
     res.json(rows);
   } catch (err) {
