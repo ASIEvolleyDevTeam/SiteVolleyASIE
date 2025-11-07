@@ -220,7 +220,6 @@ export const AddResultForm = () => {
           Ajouter
         </button>
       </form>
-    
-      <p> test</p>
+
   );
 };
