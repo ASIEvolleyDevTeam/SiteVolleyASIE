@@ -225,12 +225,7 @@ export const AddResultForm = () => {
 
 
 
-      <form onSubmit={PostponSubmit} classname="gap-4 p-6">
-        <button type="submit" className="btn btn-primary mt-4">
-          Reporter le match
-        </button>
-      </form>
-    </div>
+      <p>teeeeest</p>
 
     
   );
