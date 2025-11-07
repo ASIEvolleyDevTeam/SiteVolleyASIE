@@ -225,7 +225,7 @@ export const AddResultForm = () => {
 
 
 
-      <form onSubmit={ReportSubmit} classname="gap-4 p-6">
+      <form onSubmit={PostponSubmit} classname="gap-4 p-6">
         <span className="mb-1 font-semibold">Date</span>
           <input
             name="date"
