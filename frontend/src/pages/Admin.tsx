@@ -1,7 +1,10 @@
 import { AddResultForm } from '../components/AddResultForm';
+import { PostponeForm } from '../components/PostponeForm';
+
 import ResultsTable from '../components/tables/ResultsTable';
 import { SuperAdminProvider } from '../context/SuperAdminProvider';
 import { SuperAdminLogin } from '../components/SuperAdminLogin';
+
 export const Admin = () => {
   return (
     <>
@@ -11,6 +14,7 @@ export const Admin = () => {
       <SuperAdminProvider>
         <SuperAdminLogin />
         <AddResultForm />
+        <PostponeForm />
       </SuperAdminProvider>
       <ResultsTable />
     </>

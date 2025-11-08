@@ -1,19 +1,13 @@
 import { useState } from 'react';
 import { useSuperAdmin } from '../context/useSuperAdmin';
 
-export const AddResultForm = () => {
+export const PostponeForm = () => {
   const { isSuperAdmin, superAdminPassword } = useSuperAdmin();
 
   const [form, setForm] = useState({
     date: '',
     team1: '',
     team2: '',
-    set1_team1: 0,
-    set1_team2: 0,
-    set2_team1: 0,
-    set2_team2: 0,
-    set3_team1: null,
-    set3_team2: null,
   });
 
   const handleChange = (
@@ -41,7 +35,7 @@ export const AddResultForm = () => {
         // backend returned an error (400 / 403 / 500…)
         const err = await res.json().catch(() => ({}));
         alert(
-          `Erreur lors de l'ajout du résultat: ${
+          `Erreur lors de la mise en attente du match ${
             err.error || res.statusText || 'Erreur inconnue'
           }`
         );
@@ -51,22 +45,16 @@ export const AddResultForm = () => {
       const data = await res.json();
 
       if (data.success) {
-        alert('✅ Résultat ajouté avec succès !');
+        alert('✅ Match reporté avec succès !');
         // facultatif: reset le formulaire
         setForm({
           date: '',
           team1: '',
           team2: '',
-          set1_team1: 0,
-          set1_team2: 0,
-          set2_team1: 0,
-          set2_team2: 0,
-          set3_team1: null,
-          set3_team2: null,
         });
       } else {
         alert(
-          `⚠️ Le serveur n'a pas confirmé l'ajout: ${
+          `⚠️ Le serveur n'a pas confirmé le report: ${
             data.error || 'raison inconnue'
           }`
         );
@@ -81,11 +69,11 @@ export const AddResultForm = () => {
     return;
   }
 
-  return (
-    <div className="card bg-base-200 mt-2 items-center p-6">
-      <form onSubmit={handleSubmit} className="gap-4 p-6">
+  return (    
+    
+    <form onSubmit={handleSubmit} className="gap-4 p-6">
         <label className="flex flex-col">
-          <span className="mb-1 font-semibold">Date du match</span>
+          <span className="mb-1 font-semibold">Date initiale du match</span>
           <input
             name="date"
             type="date"
@@ -156,69 +144,9 @@ export const AddResultForm = () => {
           </select>
         </label>
 
-        <label className="flex flex-col">
-          <span className="mb-1 font-semibold">Set 1</span>
-          <div className="flex gap-2">
-            <input
-              name="set1_team1"
-              type="number"
-              onChange={handleChange}
-              className="input input-bordered w-20"
-              placeholder="É1"
-            />
-            <input
-              name="set1_team2"
-              type="number"
-              onChange={handleChange}
-              className="input input-bordered w-20"
-              placeholder="É2"
-            />
-          </div>
-        </label>
-
-        <label className="flex flex-col">
-          <span className="mb-1 font-semibold">Set 2</span>
-          <div className="flex gap-2">
-            <input
-              name="set2_team1"
-              type="number"
-              onChange={handleChange}
-              className="input input-bordered w-20"
-              placeholder="É1"
-            />
-            <input
-              name="set2_team2"
-              type="number"
-              onChange={handleChange}
-              className="input input-bordered w-20"
-              placeholder="É2"
-            />
-          </div>
-        </label>
-
-        <label className="flex flex-col">
-          <span className="mb-1 font-semibold">Set 3 (optionnel)</span>
-          <div className="flex gap-2">
-            <input
-              name="set3_team1"
-              type="number"
-              onChange={handleChange}
-              className="input input-bordered w-20"
-              placeholder="É1"
-            />
-            <input
-              name="set3_team2"
-              type="number"
-              onChange={handleChange}
-              className="input input-bordered w-20"
-              placeholder="É2"
-            />
-          </div>
-        </label>
         <button type="submit" className="btn btn-primary mt-4">
-          Ajouter
+          Reporter le match
         </button>
       </form>
-    </div>
   );
 };
