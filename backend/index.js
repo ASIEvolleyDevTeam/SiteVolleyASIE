@@ -15,7 +15,7 @@ const postponedMatchesRoutes = require("./routes/postponed_matches");
 const cupRoutes = require("./routes/cup");
 const contactsRoutes = require("./routes/contacts");
 const superAdminRoutes = require("./routes/super_admin");
-const postponed_matches = require("./routes/postpone")
+const postponed_matches = require("./routes/postpone");
 
 const app = express();
 app.use(
@@ -35,7 +35,7 @@ app.use("/api/team_calendar", teamCalendarRoutes);
 app.use("/api/results", resultsRoutes);
 app.use("/api/postponed_matches", postponedMatchesRoutes);
 app.use("/api/cupgames", cupRoutes);
-app.use("/api/postpone")
+app.use("/api/postpone", postponed_matches)
 
 app.use("/api/contacts", contactsRoutes);
 
