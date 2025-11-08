@@ -82,7 +82,6 @@ export const AddResultForm = () => {
   }
 
   return (
-    <h2>Ajouter un score</h2>
     <div className="card bg-base-200 mt-2 items-center p-6">
       <form onSubmit={handleSubmit} className="gap-4 p-6">
         <label className="flex flex-col">
