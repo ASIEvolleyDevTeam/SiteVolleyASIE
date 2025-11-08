@@ -13,9 +13,9 @@ export const Admin = () => {
       </h1>
       <SuperAdminProvider>
         <SuperAdminLogin />
-        <h2 className="mb-4 p-8 text-center text-2xl font-bold">Ajouter les scores d'un match</h2>
+        <h2 className="bg-base-200 p-8 text-center text-2xl font-bold">Ajouter les scores d'un match</h2>
         <AddResultForm />
-        <h2 className="mb-4 p-8 text-center text-2xl font-bold">Mettre un match en attente</h2>
+        <h2 className="bg-base-200 p-8 text-center text-2xl font-bold">Mettre un match en attente</h2>
         <PostponeForm />
       </SuperAdminProvider>
       <ResultsTable />
