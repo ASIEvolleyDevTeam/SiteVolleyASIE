@@ -104,19 +104,12 @@ router.post("/", async (req, res) => {
 
     // --- UPDATE existing game (do NOT touch slot/team refs) ---
     await db.query(
-      `INSERT INTO postponed_games
-       VALUES (?, ?, ?; ?)
-       
-       DELETE FROM games 
-       WHERE id = ?`,
-      [
-        gameId,
-        slotRef,
-        team1Ref,
-        team2Ref,
-        gameId,
-      ]
+      `INSERT INTO postponed_games (id, slotRef, team1Ref, team2Ref)
+      VALUES (?, ?, ?, ?)`,
+      [gameId, slotRef, team1Ref, team2Ref]
     );
+
+    await db.query(`DELETE FROM games WHERE id = ?`, [gameId]);
 
     return res.json({ success: true, gameId });
   } catch (err) {
