@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
     res.json(rows);
   } catch (err) {
     console.error("Error fetching results:", err);
-    res.status(500).json({ error: "Failed to fetch results" });
+    res.status(500).json({ error: err.message || "Failed to fetch results" });
   }
 });
 
