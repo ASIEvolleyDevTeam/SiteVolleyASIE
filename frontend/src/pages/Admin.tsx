@@ -9,11 +9,13 @@ export const Admin = () => {
   return (
     <>
       <h1 className="mb-4 p-8 text-center text-4xl font-bold">
-        Panneau d'administrateur testssss
+        Panneau d'administrateur
       </h1>
       <SuperAdminProvider>
         <SuperAdminLogin />
+        <h2>Ajouter les scores d'un match</h2>
         <AddResultForm />
+        <h2>Mettre un match en attente</h2>
         <PostponeForm />
       </SuperAdminProvider>
       <ResultsTable />
