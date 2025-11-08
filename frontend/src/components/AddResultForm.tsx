@@ -215,11 +215,85 @@ export const AddResultForm = () => {
             />
           </div>
         </label>
+      </form>
+
+      <form onSubmit={handleSubmit} className="gap-4 p-6">
+        <label className="flex flex-col">
+          <span className="mb-1 font-semibold">Date du match</span>
+          <input
+            name="date"
+            type="date"
+            onChange={handleChange}
+            className="input input-bordered"
+          />
+        </label>
+
+        <label className="flex flex-col">
+          <span className="mb-1 font-semibold">Équipe 1</span>
+          <select
+            name="team1"
+            className="select select-bordered w-full"
+            value={form.team1}
+            onChange={handleChange}
+          >
+            <option value="">-- Sélectionner une équipe --</option>
+            <option value="AirFrance">AirFrance</option>
+            <option value="Arm1">Arm1</option>
+            <option value="FortiTeam">FortiTeam</option>
+            <option value="Renault">Renault</option>
+            <option value="Amadeus 2">Amadeus 2</option>
+            <option value="Arm2">Arm2</option>
+            <option value="CADENCE">CADENCE</option>
+            <option value="InDeMENTAble">InDeMENTAble</option>
+            <option value="Thales DIS1">Thales DIS1</option>
+            <option value="Synopsys">Synopsys</option>
+            <option value="THALES">THALES</option>
+            <option value="Amadeus 1">Amadeus 1</option>
+            <option value="NXP1">NXP1</option>
+            <option value="EURECOM 1">EURECOM 1</option>
+            <option value="SiMoVolley">SiMoVolley</option>
+            <option value="EkipEkip">EkipEkip</option>
+            <option value="EURECOM 2">EURECOM 2</option>
+            <option value="NXP2">NXP2</option>
+            <option value="Thales DIS2">Thales DIS2</option>
+          </select>
+        </label>
+
+        <label className="flex flex-col">
+          <span className="mb-1 font-semibold">Équipe 2</span>
+          <select
+            name="team2"
+            className="select select-bordered w-full"
+            value={form.team2}
+            onChange={handleChange}
+          >
+            <option value="">-- Sélectionner une équipe --</option>
+            <option value="AirFrance">AirFrance</option>
+            <option value="Arm1">Arm1</option>
+            <option value="FortiTeam">FortiTeam</option>
+            <option value="Renault">Renault</option>
+            <option value="Amadeus 2">Amadeus 2</option>
+            <option value="Arm2">Arm2</option>
+            <option value="CADENCE">CADENCE</option>
+            <option value="InDeMENTAble">InDeMENTAble</option>
+            <option value="Thales DIS1">Thales DIS1</option>
+            <option value="Synopsys">Synopsys</option>
+            <option value="THALES">THALES</option>
+            <option value="Amadeus 1">Amadeus 1</option>
+            <option value="NXP1">NXP1</option>
+            <option value="EURECOM 1">EURECOM 1</option>
+            <option value="SiMoVolley">SiMoVolley</option>
+            <option value="EkipEkip">EkipEkip</option>
+            <option value="EURECOM 2">EURECOM 2</option>
+            <option value="NXP2">NXP2</option>
+            <option value="Thales DIS2">Thales DIS2</option>
+          </select>
+        </label>
 
         <button type="submit" className="btn btn-primary mt-4">
           Ajouter
         </button>
       </form>
-
+    </div>
   );
 };
