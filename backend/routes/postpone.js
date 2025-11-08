@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
       JOIN slots ON g.slotRef = slots.id
       JOIN teams t1 ON g.team1Ref = t1.id
       JOIN teams t2 ON g.team2Ref = t2.id
-      WHERE g.set1_team1 IS NOT NULL
+      WHERE g.set1_team1 IS NULL
       ORDER BY slots.date ASC
     `);
     res.json(rows);
