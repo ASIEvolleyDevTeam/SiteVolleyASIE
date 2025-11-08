@@ -22,7 +22,7 @@ export const PostponeForm = () => {
     if (!isSuperAdmin) return;
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_BASE}/api/results`, {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE}/api/postpone`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
