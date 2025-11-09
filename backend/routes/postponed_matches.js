@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
       SELECT 
         DATE_FORMAT(slots.date, '%d/%m') AS date,
         t1.name AS team1,
-        t2.name AS team2,
+        t2.name AS team2
       FROM postponed_games p
       JOIN slots ON p.slotRef = slots.id
       JOIN teams t1 ON p.team1Ref = t1.id
