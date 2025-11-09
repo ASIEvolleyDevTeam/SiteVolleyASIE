@@ -33,7 +33,7 @@ export const PostponedMatchesTable = () => {
       <table className="table-zebra table w-full text-center">
         <thead className="bg-base-300">
           <tr>
-            <th>Date</th>
+            <th>Date initiale</th>
             <th>Équipe 1</th>
             <th>Équipe 2</th>
           </tr>
