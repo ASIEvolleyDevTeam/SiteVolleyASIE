@@ -12,7 +12,7 @@ export const PostponedMatchesTable = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_BASE}/api/matches/postponed`)
+    fetch(`${import.meta.env.VITE_API_BASE}/api/matches/postponed_matches`)
       .then((res) => res.json())
       .then((data) => {
         setMatches(data);
