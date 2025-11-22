@@ -144,8 +144,6 @@ ON gs.team1Ref = t.id OR gs.team2Ref = t.id
 WHERE tp.poolRef = ?
 GROUP BY t.id
 ORDER BY points DESC;
-
-
       `,
       [poolId]
     );
