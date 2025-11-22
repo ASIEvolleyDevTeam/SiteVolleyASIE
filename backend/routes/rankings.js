@@ -26,124 +26,119 @@ router.get("/:poolId", async (req, res) => {
     COUNT(gs.game_id) AS played,
     SUM(CASE WHEN gs.winner = t.id THEN 1 ELSE 0 END) AS victory,
     SUM(CASE WHEN gs.winner != t.id THEN 1 ELSE 0 END) AS defeat,
-    SUM(gs.no_show) AS no_show,
 
-    /* Sets */
     SUM(gs.sets_for) AS set_for,
     SUM(gs.sets_against) AS set_against,
-    ROUND(
-        SUM(gs.sets_for) / NULLIF(SUM(gs.sets_against), 0), 2
-    ) AS set_ratio,
-
-    /* Points marqués / encaissés */
     SUM(gs.points_for) AS points_for,
     SUM(gs.points_against) AS points_against,
+
+    SUM(gs.no_show) AS no_show,
+
     ROUND(
-        SUM(gs.points_for) / NULLIF(SUM(gs.points_against), 0), 2
+        SUM(gs.sets_for) /
+        NULLIF(SUM(gs.sets_against), 0), 2
+    ) AS set_ratio,
+
+    ROUND(
+        SUM(gs.points_for) /
+        NULLIF(SUM(gs.points_against), 0), 2
     ) AS point_ratio
 
 FROM teams t
 JOIN teams_pools tp ON tp.teamRef = t.id
 
+/* === SOUS-REQUÊTE : LOGIQUE DU MATCH === */
 LEFT JOIN (
     SELECT
         g.id AS game_id,
         g.team1Ref,
         g.team2Ref,
 
-        /* === Sets valides === */
+        /* --- SETS VALIDES --- */
+        /* Set 1 valide si >= 34 points au total */
         (CASE WHEN g.set1_team1 + g.set1_team2 >= 34 THEN 1 ELSE 0 END) AS s1_valid,
         (CASE WHEN g.set2_team1 + g.set2_team2 >= 34 THEN 1 ELSE 0 END) AS s2_valid,
         (CASE WHEN g.set3_team1 + g.set3_team2 >= 20 THEN 1 ELSE 0 END) AS s3_valid,
 
-        /* === Sets gagnés "valides" === */
-        /* Team 1 */
-        (
-            (CASE WHEN g.set1_team1 > g.set1_team2 AND g.set1_team1 + g.set1_team2 >= 34 THEN 1 ELSE 0 END) +
-            (CASE WHEN g.set2_team1 > g.set2_team2 AND g.set2_team1 + g.set2_team2 >= 34 THEN 1 ELSE 0 END) +
-            (CASE WHEN g.set3_team1 > g.set3_team2 AND g.set3_team1 + g.set3_team2 >= 20 THEN 1 ELSE 0 END)
-        ) AS sets_team1_valid,
+        /* --- SETS GAGNÉS PAR ÉQUIPE --- */
+        /* Team1 */
+        (CASE WHEN g.set1_team1 > g.set1_team2 AND g.set1_team1 + g.set1_team2 >= 34 THEN 1 ELSE 0 END) +
+        (CASE WHEN g.set2_team1 > g.set2_team2 AND g.set2_team1 + g.set2_team2 >= 34 THEN 1 ELSE 0 END) +
+        (CASE WHEN g.set3_team1 > g.set3_team2 AND g.set3_team1 + g.set3_team2 >= 20 THEN 1 ELSE 0 END)
+        AS sets_team1_valid,
 
-        /* Team 2 */
-        (
-            (CASE WHEN g.set1_team2 > g.set1_team1 AND g.set1_team1 + g.set1_team2 >= 34 THEN 1 ELSE 0 END) +
-            (CASE WHEN g.set2_team2 > g.set2_team1 AND g.set2_team1 + g.set2_team2 >= 34 THEN 1 ELSE 0 END) +
-            (CASE WHEN g.set3_team2 > g.set3_team1 AND g.set3_team1 + g.set3_team2 >= 20 THEN 1 ELSE 0 END)
-        ) AS sets_team2_valid,
+        /* Team2 */
+        (CASE WHEN g.set1_team2 > g.set1_team1 AND g.set1_team1 + g.set1_team2 >= 34 THEN 1 ELSE 0 END) +
+        (CASE WHEN g.set2_team2 > g.set2_team1 AND g.set2_team1 + g.set2_team2 >= 34 THEN 1 ELSE 0 END) +
+        (CASE WHEN g.set3_team2 > g.set3_team1 AND g.set3_team1 + g.set3_team2 >= 20 THEN 1 ELSE 0 END)
+        AS sets_team2_valid,
 
-        /* === Points totaux === */
+        /* --- POINTS TOTAUX --- */
         (g.set1_team1 + g.set2_team1 + g.set3_team1) AS points_team1_total,
         (g.set1_team2 + g.set2_team2 + g.set3_team2) AS points_team2_total,
 
-        /* === Vainqueur === */
+        /* --- LOGIQUE DU GAGNANT --- */
         CASE 
             WHEN g.team1NoShow = 1 THEN g.team2Ref
             WHEN g.team2NoShow = 1 THEN g.team1Ref
 
-            /* 2 sets valides gagnés */
+            /* équipe 1 gagne 2 sets */
             WHEN (
                 (CASE WHEN g.set1_team1 > g.set1_team2 AND g.set1_team1 + g.set1_team2 >= 34 THEN 1 ELSE 0 END) +
                 (CASE WHEN g.set2_team1 > g.set2_team2 AND g.set2_team1 + g.set2_team2 >= 34 THEN 1 ELSE 0 END) +
                 (CASE WHEN g.set3_team1 > g.set3_team2 AND g.set3_team1 + g.set3_team2 >= 20 THEN 1 ELSE 0 END)
             ) >= 2 THEN g.team1Ref
 
+            /* équipe 2 gagne 2 sets */
             WHEN (
                 (CASE WHEN g.set1_team2 > g.set1_team1 AND g.set1_team1 + g.set1_team2 >= 34 THEN 1 ELSE 0 END) +
                 (CASE WHEN g.set2_team2 > g.set2_team1 AND g.set2_team1 + g.set2_team2 >= 34 THEN 1 ELSE 0 END) +
                 (CASE WHEN g.set3_team2 > g.set3_team1 AND g.set3_team1 + g.set3_team2 >= 20 THEN 1 ELSE 0 END)
             ) >= 2 THEN g.team2Ref
 
-            /* Match interrompu → gagnant = plus de sets valides */
+            /* match interrompu → plus de sets valides gagnés */
             WHEN 
-                (
-                    (CASE WHEN g.set1_team1 > g.set1_team2 AND g.set1_team1 + g.set1_team2 >= 34 THEN 1 ELSE 0 END) +
-                    (CASE WHEN g.set2_team1 > g.set2_team2 AND g.set2_team1 + g.set2_team2 >= 34 THEN 1 ELSE 0 END) +
-                    (CASE WHEN g.set3_team1 > g.set3_team2 AND g.set3_team1 + g.set3_team2 >= 20 THEN 1 ELSE 0 END)
-                )
+                ( (CASE WHEN g.set1_team1 > g.set1_team2 AND g.set1_team1 + g.set1_team2 >= 34 THEN 1 ELSE 0 END) +
+                  (CASE WHEN g.set2_team1 > g.set2_team2 AND g.set2_team1 + g.set2_team2 >= 34 THEN 1 ELSE 0 END) +
+                  (CASE WHEN g.set3_team1 > g.set3_team2 AND g.set3_team1 + g.set3_team2 >= 20 THEN 1 ELSE 0 END) )
                 >
-                (
-                    (CASE WHEN g.set1_team2 > g.set1_team1 AND g.set1_team1 + g.set1_team2 >= 34 THEN 1 ELSE 0 END) +
-                    (CASE WHEN g.set2_team2 > g.set2_team1 AND g.set2_team1 + g.set2_team2 >= 34 THEN 1 ELSE 0 END) +
-                    (CASE WHEN g.set3_team2 > g.set3_team1 AND g.set3_team1 + g.set3_team2 >= 20 THEN 1 ELSE 0 END)
-                )
+                ( (CASE WHEN g.set1_team2 > g.set1_team1 AND g.set1_team1 + g.set1_team2 >= 34 THEN 1 ELSE 0 END) +
+                  (CASE WHEN g.set2_team2 > g.set2_team1 AND g.set2_team1 + g.set2_team2 >= 34 THEN 1 ELSE 0 END) +
+                  (CASE WHEN g.set3_team2 > g.set3_team1 AND g.set3_team1 + g.set3_team2 >= 20 THEN 1 ELSE 0 END) )
             THEN g.team1Ref
 
             WHEN 
-                (
-                    (CASE WHEN g.set1_team2 > g.set1_team1 AND g.set1_team1 + g.set1_team2 >= 34 THEN 1 ELSE 0 END) +
-                    (CASE WHEN g.set2_team2 > g.set2_team1 AND g.set2_team1 + g.set2_team2 >= 34 THEN 1 ELSE 0 END) +
-                    (CASE WHEN g.set3_team2 > g.set3_team1 AND g.set3_team1 + g.set3_team2 >= 20 THEN 1 ELSE 0 END)
-                )
+                ( (CASE WHEN g.set1_team2 > g.set1_team1 AND g.set1_team1 + g.set1_team2 >= 34 THEN 1 ELSE 0 END) +
+                  (CASE WHEN g.set2_team2 > g.set2_team1 AND g.set2_team1 + g.set2_team2 >= 34 THEN 1 ELSE 0 END) +
+                  (CASE WHEN g.set3_team2 > g.set3_team1 AND g.set3_team1 + g.set3_team2 >= 20 THEN 1 ELSE 0 END) )
                 >
-                (
-                    (CASE WHEN g.set1_team1 > g.set1_team2 AND g.set1_team1 + g.set1_team2 >= 34 THEN 1 ELSE 0 END) +
-                    (CASE WHEN g.set2_team1 > g.set2_team2 AND g.set2_team1 + g.set2_team2 >= 34 THEN 1 ELSE 0 END) +
-                    (CASE WHEN g.set3_team1 > g.set3_team2 AND g.set3_team1 + g.set3_team2 >= 20 THEN 1 ELSE 0 END)
-                )
+                ( (CASE WHEN g.set1_team1 > g.set1_team2 AND g.set1_team1 + g.set1_team2 >= 34 THEN 1 ELSE 0 END) +
+                  (CASE WHEN g.set2_team1 > g.set2_team2 AND g.set2_team1 + g.set2_team2 >= 34 THEN 1 ELSE 0 END) +
+                  (CASE WHEN g.set3_team1 > g.set3_team2 AND g.set3_team1 + g.set3_team2 >= 20 THEN 1 ELSE 0 END) )
             THEN g.team2Ref
 
-            /* 1–1 en sets valides → gagnant = total points */
-            WHEN (g.set1_team1 + g.set2_team1 + g.set3_team1) >
-                 (g.set1_team2 + g.set2_team2 + g.set3_team2)
+            /* 1–1 → vainqueur = total de points */
+            WHEN g.set1_team1 + g.set2_team1 + g.set3_team1 >
+                 g.set1_team2 + g.set2_team2 + g.set3_team2
             THEN g.team1Ref
             ELSE g.team2Ref
         END AS winner,
 
-        /* === Pour calcul détaillé par équipe === */
-        /* no show */
-        CASE WHEN g.team1NoShow = 1 OR g.team2NoShow = 1 THEN 1 ELSE 0 END AS no_show,
+        /* === Pour calcul par équipe ensuite === */
+        g.team1NoShow,
+        g.team2NoShow,
 
-        /* points pour/contre */
-        (g.set1_team1 + g.set2_team1 + g.set3_team1) AS points_team1,
-        (g.set1_team2 + g.set2_team2 + g.set3_team2) AS points_team2
+        /* sets / points pour chaque équipe séparément */
+        g.set1_team1 + g.set2_team1 + g.set3_team1 AS points_team1,
+        g.set1_team2 + g.set2_team2 + g.set3_team2 AS points_team2
 
     FROM games g
-) AS gs 
-ON gs.team1Ref = t.id OR gs.team2Ref = t.id
+) AS gs ON gs.team1Ref = t.id OR gs.team2Ref = t.id
 
 WHERE tp.poolRef = ?
 GROUP BY t.id
 ORDER BY points DESC;
+
       `,
       [poolId]
     );
