@@ -44,9 +44,9 @@ export const GlobalCalendarTable = () => {
           {calendar.map((entry, index) => (
             <tr key={index}>
               <td>{entry.date}</td>
-              <td className="w-25 text-center">{entry.team1}</td>
-              <td className="w-25 text-center">{entry.team2}</td>
-              <td className="w-12 text-center">
+              <td>{entry.team1}</td>
+              <td>{entry.team2}</td>
+              <td className="w-18 text-center">
                 {Number(entry.cup) === 1 && (
                   <span className="text-2xl">🏆</span>
                   
