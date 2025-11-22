@@ -47,7 +47,7 @@ export const GlobalCalendarTable = () => {
               <td>{entry.team1}</td>
               <td>{entry.team2}</td>
               <td>
-                {entry.cup === "1" && (
+                {Number(entry.cup) === 1 && (
                   <span className="text-xl">🏆</span>
                   
                 )}
