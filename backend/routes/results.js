@@ -157,8 +157,8 @@ router.post("/", async (req, res) => {
         s3t2,
         sets_team1,
         sets_team2,
-        0,
-        0, // points: ajustez si vous les calculez
+        s1t1 + s2t1 + s3t1,
+        s1t2 + s2t2 + s3t2, 
         n(refNoShow) ?? 0,
         n(team1NoShow) ?? 0,
         n(team2NoShow) ?? 0,
