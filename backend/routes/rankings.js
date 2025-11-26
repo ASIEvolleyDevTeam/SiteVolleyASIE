@@ -14,7 +14,7 @@ router.get("/:poolId", async (req, res) => {
         t.points AS points,
         COUNT(g.id) AS played,
         SUM(CASE WHEN (g.winnerRef = t.id) THEN 1 ELSE 0 END) AS victory,
-        SUM(CASE WHEN (g.winnerRef IS NOT NULL AND g.winnerRef != t.id AND (g.team1Ref = t.id OR g.team2Ref = t.id)) THEN 1 ELSE 0 END) AS defeat,
+        (COUNT(g.id) - SUM(CASE WHEN (g.winnerRef = t.id) THEN 1 ELSE 0 END)) AS defeat,
         SUM(CASE WHEN t.id = g.team1Ref THEN g.sets_team1
                  WHEN t.id = g.team2Ref THEN g.sets_team2
                  ELSE 0 END) AS set_for,
