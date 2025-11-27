@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
         w.name AS winner,
         g.set1_team1, g.set1_team2,
         g.set2_team1, g.set2_team2,
-        g.set3_team1, g.set3_team2,
+        g.set3_team1, g.set3_team2
       FROM games g
       WHERE cg.cup = 1
       LEFT JOIN teams t1 ON g.team1Ref = t1.id
