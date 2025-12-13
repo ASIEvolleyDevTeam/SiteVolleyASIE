@@ -34,7 +34,7 @@ app.use("/api/global_calendar_preview", globalCalendarPreviewRoutes);
 app.use("/api/team_calendar", teamCalendarRoutes);
 app.use("/api/results", resultsRoutes);
 app.use("/api/postponed_matches", postponedMatchesRoutes);
-app.use("/api/cupgames", cupRoutes);
+app.use("/api/cup", cupRoutes);
 app.use("/api/postpone", postponed_matches);
 
 app.use("/api/contacts", contactsRoutes);
