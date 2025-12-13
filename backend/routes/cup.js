@@ -5,7 +5,7 @@ const db = require("../db");
 // Return all cup matches with resolved team names and dates
 router.get("/", async (req, res) => {
   try {
-    const [rows] = await db.query(`
+      const [rows] = await db.query(`
       SELECT 
         cg.id,
         DATE_FORMAT(s.date, '%Y-%m-%d') AS date,
@@ -17,11 +17,11 @@ router.get("/", async (req, res) => {
         cg.set3_team1, cg.set3_team2,
         cg.nextGameRef
       FROM games cg
-      WHERE cg.cup = 1
       LEFT JOIN teams t1 ON cg.team1Ref = t1.id
       LEFT JOIN teams t2 ON cg.team2Ref = t2.id
       LEFT JOIN teams w ON cg.winnerRef = w.id
       LEFT JOIN slots s ON cg.slotRef = s.id
+      WHERE cg.cup = 1
       ORDER BY cg.id ASC
     `);
     res.json(rows);
