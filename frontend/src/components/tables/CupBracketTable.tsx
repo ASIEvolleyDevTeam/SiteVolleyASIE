@@ -37,7 +37,7 @@ export const CupBracketTable = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_BASE}/api/cupgames`)
+    fetch(`${import.meta.env.VITE_API_BASE}/api/cup`)
       .then((res) => res.json())
       .then((matches: CupMatch[]) => {
         const byNext = new Map<number, CupMatch[]>();
