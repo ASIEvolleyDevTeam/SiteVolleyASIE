@@ -21,7 +21,6 @@ router.get("/", async (req, res) => {
       LEFT JOIN teams t2 ON cg.team2Ref = t2.id
       LEFT JOIN teams w ON cg.winnerRef = w.id
       LEFT JOIN slots s ON cg.slotRef = s.id
-      WHERE cg.cup = 1
       ORDER BY cg.id ASC
     `);
     res.json(rows);
