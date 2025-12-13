@@ -26,9 +26,12 @@ router.get("/", async (req, res) => {
     `);
     res.json(rows);
   } catch (err) {
-    console.error("Error fetching cup games:", err);
-    res.status(500).json({ error: "Failed to fetch cup games" });
-  }
+      console.error("Error fetching cup games:", err);
+      res.status(500).json({
+        error: err.message,
+        code: err.code
+  });
+}
 });
 
 module.exports = router;
