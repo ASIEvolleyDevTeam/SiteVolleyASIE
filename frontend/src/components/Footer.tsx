@@ -2,7 +2,7 @@ export const Footer = () => {
   return (
     <footer className="bg-base-200 text-base-content py-4 text-center text-sm">
       <p>
-        Site développé par <span className="font-semibold">Frédéric KAH</span> —
+        Site développé par <span className="font-semibold">Frédéric KAH</span> et <span className="font-semibold">Victor HALBITTE</span> —
         ASIE Volley © {new Date().getFullYear()}
       </p>
       <div className="mt-1 space-x-4">
