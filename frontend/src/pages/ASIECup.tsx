@@ -62,6 +62,10 @@ export const ASIECup = () => {
               <td>2023-2024</td>
               <td>Pas de gymnase ?</td>
             </tr>
+            <tr>
+              <td>2024-2025</td>
+              <td>THALES</td>
+            </tr>
           </tbody>
         </table>
       </div>
