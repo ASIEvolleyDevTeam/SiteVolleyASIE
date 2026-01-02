@@ -26,7 +26,7 @@ const Tooltip: React.FC<TooltipProps> = ({ content, children }) => {
       </div>
       {isVisible && (
         <div
-          className="tooltip-content absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 p-2 bg-white border border-gray-300 rounded-md shadow-lg z-50 text-sm"
+          className="tooltip-content absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 p-2 bg-base-200 border border-gray-300 rounded-md shadow-lg z-50 text-sm"
           onMouseEnter={() => setIsVisible(true)}
           onMouseLeave={() => setIsVisible(false)}
         >
@@ -46,7 +46,7 @@ export const Footer = () => {
           content={
             <div>
               <p className="font-semibold">Frédéric KAH</p>
-              <p>Développeur web</p>
+              <p>Etudiant à Eurecom (Promo 2027)</p>
               <a
                 href="https://www.linkedin.com/in/fr%C3%A9d%C3%A9ric-kah-7213a1354/"
                 target="_blank"
@@ -54,6 +54,14 @@ export const Footer = () => {
                 className="text-blue-500 hover:underline"
               >
                 LinkedIn
+              </a>
+              <a
+                href="https://frkah.github.io/webdev_site_portfolio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 hover:underline"
+              >
+                Portfolio 
               </a>
             </div>
           }
@@ -65,9 +73,9 @@ export const Footer = () => {
           content={
             <div>
               <p className="font-semibold">Victor HALBITTE</p>
-              <p>Développeur web</p>
+              <p>Etudiant à Eurecom (Promo 2028)</p>
               <a
-                href="https://www.linkedin.com/in/victor-halbitte/"
+                href="https://www.linkedin.com/in/vhalbitte/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-500 hover:underline"
