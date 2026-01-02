@@ -92,24 +92,6 @@ export const Footer = () => {
         </Tooltip>{' '}
         — ASIE Volley © {new Date().getFullYear()}
       </p>
-      <div className="mt-1 space-x-4">
-        <a
-          href="https://www.linkedin.com/in/fr%C3%A9d%C3%A9ric-kah-7213a1354/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:underline"
-        >
-          LinkedIn
-        </a>
-        <a
-          href="https://frkah.github.io/webdev_site_portfolio"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:underline"
-        >
-          Portfolio
-        </a>
-      </div>
     </footer>
   );
 };
