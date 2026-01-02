@@ -10,24 +10,30 @@ const Tooltip: React.FC<TooltipProps> = ({ content, children }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   return (
-    <span className="relative inline-block">
-      <span
+    <div className="relative inline-block">
+      <div
         onMouseEnter={() => setIsVisible(true)}
-        onMouseLeave={() => setIsVisible(false)}
-        className="cursor-help"
+        onMouseLeave={(e) => {
+          // Ne pas masquer si la souris entre dans la boîte
+          const tooltipElement = e.currentTarget.querySelector('.tooltip-content');
+          if (tooltipElement && !tooltipElement.matches(':hover')) {
+            setIsVisible(false);
+          }
+        }}
+        className="inline-block"
       >
         {children}
-      </span>
+      </div>
       {isVisible && (
         <div
+          className="tooltip-content absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 p-2 bg-white border border-gray-300 rounded-md shadow-lg z-50 text-sm"
           onMouseEnter={() => setIsVisible(true)}
           onMouseLeave={() => setIsVisible(false)}
-          className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 p-2 bg-white border border-gray-300 rounded-md shadow-lg z-50 text-sm"
         >
           {content}
         </div>
       )}
-    </span>
+    </div>
   );
 };
 
