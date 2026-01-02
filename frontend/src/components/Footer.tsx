@@ -47,23 +47,26 @@ export const Footer = () => {
             <div>
               <p className="font-semibold">Frédéric KAH</p>
               <p>Etudiant à Eurecom (Promo 2027)</p>
-              <a
-                href="https://www.linkedin.com/in/fr%C3%A9d%C3%A9ric-kah-7213a1354/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 hover:underline"
-              >
-                LinkedIn
-              </a>
-              <a
-                href="https://frkah.github.io/webdev_site_portfolio"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 hover:underline"
-              >
-                Portfolio 
-              </a>
+              <div className="space-x-4"> 
+                <a
+                  href="https://www.linkedin.com/in/fr%C3%A9d%C3%A9ric-kah-7213a1354/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:underline inline-block"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href="https://frkah.github.io/webdev_site_portfolio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:underline inline-block"
+                >
+                  Portfolio
+                </a>
+              </div>
             </div>
+
           }
         >
           <span className="font-semibold underline">Frédéric KAH</span>
