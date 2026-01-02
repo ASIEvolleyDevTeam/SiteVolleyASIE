@@ -19,7 +19,11 @@ const Tooltip: React.FC<TooltipProps> = ({ content, children }) => {
         {children}
       </span>
       {isVisible && (
-        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 p-2 bg-white border border-gray-300 rounded-md shadow-lg z-50 text-sm">
+        <div
+          onMouseEnter={() => setIsVisible(true)}
+          onMouseLeave={() => setIsVisible(false)}
+          className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 p-2 bg-white border border-gray-300 rounded-md shadow-lg z-50 text-sm"
+        >
           {content}
         </div>
       )}
