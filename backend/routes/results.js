@@ -253,24 +253,28 @@ router.post("/", async (req, res) => {
         }
     }
 
-    await db.query(
-      `UPDATE teams
-        SET points = points + ?
-        WHERE name = ?`,
-      [
-        points1,
-        team1,
-      ]
-    );
-    await db.query(
-      `UPDATE teams
-        SET points = points + ?
-        WHERE name = ?`,
-      [
-        points2,
-        team2,
-      ]
-    );
+    // --- UPDATE points seulement si ce n'est PAS un match de coupe ---
+    // On vérifie si le match actuel a la colonne cup = 1
+    const [currentGame] = await db.query("SELECT cup FROM games WHERE id = ?", [gameId]);
+    const isCupMatch = (currentGame[0].cup === 1);
+
+    if (!isCupMatch) {
+        await db.query(
+          `UPDATE teams
+            SET points = points + ?
+            WHERE name = ?`,
+          [points1, team1]
+        );
+        await db.query(
+          `UPDATE teams
+            SET points = points + ?
+            WHERE name = ?`,
+          [points2, team2]
+        );
+        console.log(`Points de championnat ajoutés : ${team1} (+${points1}), ${team2} (+${points2})`);
+    } else {
+        console.log("Match de coupe détecté (cup=1) : les points ne sont pas ajoutés au classement général.");
+    }
     
     return res.json({ success: true, gameId });
   } catch (err) {
