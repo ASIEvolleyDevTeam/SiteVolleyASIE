@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { CURRENT_TEAMS } from '../constants/teams';
 import { useSuperAdmin } from '../context/useSuperAdmin';
 
 export const AddResultForm = () => {
@@ -103,25 +104,11 @@ export const AddResultForm = () => {
             onChange={handleChange}
           >
             <option value="">-- Sélectionner une équipe --</option>
-            <option value="AirFrance">AirFrance</option>
-            <option value="Arm1">Arm1</option>
-            <option value="FortiTeam">FortiTeam</option>
-            <option value="Renault">Renault</option>
-            <option value="Amadeus 2">Amadeus 2</option>
-            <option value="Arm2">Arm2</option>
-            <option value="CADENCE">CADENCE</option>
-            <option value="InDeMENTAble">InDeMENTAble</option>
-            <option value="Thales DIS1">Thales DIS1</option>
-            <option value="Synopsys">Synopsys</option>
-            <option value="THALES">THALES</option>
-            <option value="Amadeus 1">Amadeus 1</option>
-            <option value="NXP1">NXP1</option>
-            <option value="EURECOM 1">EURECOM 1</option>
-            <option value="SiMoVolley">SiMoVolley</option>
-            <option value="EkipEkip">EkipEkip</option>
-            <option value="EURECOM 2">EURECOM 2</option>
-            <option value="NXP2">NXP2</option>
-            <option value="Thales DIS2">Thales DIS2</option>
+            {CURRENT_TEAMS.map((team) => (
+              <option key={team} value={team}>
+                {team}
+              </option>
+            ))}
           </select>
         </label>
 
@@ -134,25 +121,11 @@ export const AddResultForm = () => {
             onChange={handleChange}
           >
             <option value="">-- Sélectionner une équipe --</option>
-            <option value="AirFrance">AirFrance</option>
-            <option value="Arm1">Arm1</option>
-            <option value="FortiTeam">FortiTeam</option>
-            <option value="Renault">Renault</option>
-            <option value="Amadeus 2">Amadeus 2</option>
-            <option value="Arm2">Arm2</option>
-            <option value="CADENCE">CADENCE</option>
-            <option value="InDeMENTAble">InDeMENTAble</option>
-            <option value="Thales DIS1">Thales DIS1</option>
-            <option value="Synopsys">Synopsys</option>
-            <option value="THALES">THALES</option>
-            <option value="Amadeus 1">Amadeus 1</option>
-            <option value="NXP1">NXP1</option>
-            <option value="EURECOM 1">EURECOM 1</option>
-            <option value="SiMoVolley">SiMoVolley</option>
-            <option value="EkipEkip">EkipEkip</option>
-            <option value="EURECOM 2">EURECOM 2</option>
-            <option value="NXP2">NXP2</option>
-            <option value="Thales DIS2">Thales DIS2</option>
+            {CURRENT_TEAMS.map((team) => (
+              <option key={team} value={team}>
+                {team}
+              </option>
+            ))}
           </select>
         </label>
 

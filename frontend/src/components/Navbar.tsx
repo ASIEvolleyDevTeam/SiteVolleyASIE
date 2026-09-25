@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { CURRENT_TEAMS } from '../constants/teams';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -87,27 +88,7 @@ const MenuList = ({ mobile = false }: { mobile?: boolean }) => (
           Calendriers d'équipe
         </summary>
         <ul className="bg-base-200 z-50 p-2 text-center">
-          {[
-            'AirFrance',
-            'Arm1',
-            'FortiTeam',
-            'Renault',
-            'Amadeus 2',
-            'Arm2',
-            'CADENCE',
-            'InDeMENTAble',
-            'Thales DIS1',
-            'Synopsys',
-            'THALES',
-            'Amadeus 1',
-            'NXP1',
-            'EURECOM 1',
-            'SiMoVolley',
-            'EkipEkip',
-            'EURECOM 2',
-            'NXP2',
-            'Thales DIS2',
-          ].map((team) => (
+          {CURRENT_TEAMS.map((team) => (
             <li key={team}>
               <a
                 className={mobile ? 'w-full justify-center' : ''}
