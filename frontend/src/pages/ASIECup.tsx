@@ -44,11 +44,11 @@ export const ASIECup = () => {
             </tr>
             <tr>
               <td>2019-2020</td>
-              <td>COVID</td>
+              <td><span className="text-sm italic">COVID</span></td>
             </tr>
             <tr>
               <td>2020-2021</td>
-              <td>COVID</td>
+              <td><span className="text-sm italic">COVID</span></td>
             </tr>
             <tr>
               <td>2021-2022</td>
@@ -60,11 +60,15 @@ export const ASIECup = () => {
             </tr>
             <tr>
               <td>2023-2024</td>
-              <td>Pas de gymnase ?</td>
+              <td><span className="text-sm italic">Gymnase en travaux</span></td>
             </tr>
             <tr>
               <td>2024-2025</td>
               <td>THALES</td>
+            </tr>
+            <tr>
+              <td>2025-2026</td>
+              <td>Une équipe obscure... (<span className="text-sm italic">la même que 2024-2025!)</span></td>
             </tr>
           </tbody>
         </table>
