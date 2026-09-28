@@ -15,37 +15,22 @@ export const PostponedMatches = () => {
           </h1>
           <ol className="mb-6 list-inside list-decimal space-y-4 text-lg">
             <li>
-              <span className="font-semibold">Définir les dates :</span>{' '}
-              Commencez par définir entre vous les dates de reports (il va
-              probablement falloir échanger avec un autre match).
+              <span className="font-semibold">Définir la date :</span>
+              Commencez par définir entre vous la date de report du match.
             </li>
             <li>
-              <span className="font-semibold">
-                Envoyer un mail récapitulatif :
-              </span>{' '}
-              Une fois que toutes les équipes concernées sont OK, faire un mail
-              récapitulatif (et succinct !) à{' '}
-              <a
-                href="mailto:asievolley06+reports@googlegroups.com"
-                className="underline"
-              >
-                l'adresse de l'association dédiée aux reports
-              </a>
-              , en mettant en copie les capitaines de toutes les équipes
-              concernées.
+              <span className="font-semibold">Demander la mise à jour du calendrier:</span>
+              Une fois que toutes les équipes concernées sont OK, envoyez un message sur le groupe WhatsApp dédié (<a href="Résultats de matchs et demandes de report">https://chat.whatsapp.com/Kd3oaujmVNv5qSZWIOzPXS</a>).
+              Le calendrier sera mis à jour sur le site dès que possible.
               <br />
-              <span className="text-sm italic">
-                Ce mail ne doit pas engager une nouvelle discussion concernant
-                le report, sinon il sera ignoré.
-              </span>
             </li>
           </ol>
           <div className="bg-warning/20 border-warning text-warning-800 rounded border-l-4 px-4 py-3 text-base">
             <span className="font-semibold">Important :</span> La demande de
-            décalage doit nous parvenir le plus tôt possible, et au plus tard{' '}
+            décalage doit nous parvenir le plus tôt possible, et au plus tard
             <span className="font-bold">LA VEILLE</span> du match.
             <br />
-            Tout décalage demandé le jour du match sera{' '}
+            Tout décalage demandé le jour du match sera
             <span className="font-bold">refusé</span>.
           </div>
         </section>
