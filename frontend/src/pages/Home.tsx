@@ -38,7 +38,7 @@ export const Home = () => {
             Voir tout le calendrier global
           </button>
           <p className="text-center">
-            Pour toute question contactez les organisateurs (Thomas, Zac et Colin) en rejoignant <a href="https://chat.whatsapp.com/FA08itPeIVv9ftBiQdLCb4">la communauté WhatsApp"</a> du Volley ASIE.
+            Pour toute question contactez les organisateurs (Thomas, Zac et Colin) en rejoignant <a href="https://chat.whatsapp.com/FA08itPeIVv9ftBiQdLCb4">la communauté WhatsApp</a> du Volley ASIE.
           </p>
         </section>
       </div>

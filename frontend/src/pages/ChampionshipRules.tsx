@@ -11,22 +11,22 @@ export const ChampionshipRules = () => {
         </h2>
         <p className="mb-2">
           Les matchs ont lieu à 12h15 les lundi et jeudis au gymnase du CIV. Une
-          équipe qui n'est pas prête à jouer à 12:30 sera déclarée forfait.
+          équipe qui n'est pas prête à jouer à 12h30 sera déclarée forfait.
           Le gymnase est réservé à l'ASIE Volley jusqu'à 13h15 les lundis, et jusqu'à 13h les mardis et jeudis.
           Merci de libérer le gymnase dès que les professeurs et élèves du lycée en ont besoin, pour conserver nos
           bonnes relations avec eux et avec la mairie de Valbonne!
         </p>
-        <p className="mb-2">Deux vestiaires sont à votre disposition:</p>
+        <p className="mb-2">Deux vestiaires sont à votre disposition&nbsp;:</p>
         <ul className="mb-2 ml-6 list-disc">
-          <li>- à l'étage supérieur, le vestiaire Professeurs est réservé aux joueuses.</li>
-          <li>- à l'étage intermédiaire, le vestiaire numéro 7 est ouvert aux joueurs.</li>
+          <li>à l'étage supérieur, le vestiaire Professeurs est réservé aux joueuses.</li>
+          <li>à l'étage intermédiaire, le vestiaire numéro 7 est ouvert aux joueurs.</li>
         </ul>
         <h2 className="mb-4 text-center text-2xl font-bold">
           Déroulement des matchs
         </h2>
         <p className="mb-2">
           Les règles classiques du volley en salle s'appliquent avec quelques
-          différences :
+          différences&nbsp;:
         </p>
         <ul className="mb-2 ml-6 list-disc">
           <li>Chaque équipe est constituée de 4 joueurs</li>
@@ -101,8 +101,8 @@ export const ChampionshipRules = () => {
       <section className="bg-base-200 rounded-xl p-6 shadow">
         <h2 className="mb-4 text-center text-2xl font-bold">Résultats</h2>
         <p className="mb-2">
-          Les résultats doivent être envoyés sur le groupe WhatsApp (<a href="Résultats de matchs et demandes de report">https://chat.whatsapp.com/Kd3oaujmVNv5qSZWIOzPXS</a>).
-          Le message doit inclure:
+          Les résultats doivent être envoyés sur le groupe WhatsApp (<a href="https://chat.whatsapp.com/Kd3oaujmVNv5qSZWIOzPXS">Résultats de matchs et demandes de report</a>).
+          Le message doit inclure&nbsp;:
         </p>
         <ul className="mb-2 list-inside list-disc">
           <li>Le nom des équipes</li>
